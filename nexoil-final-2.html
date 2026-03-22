@@ -1,0 +1,1391 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="NEXOIL — Oil & Gas Intermediary. Connecting Middle East producers with European markets. Brussels, Belgium.">
+<title>NEXOIL — Oil & Gas Intermediary</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,700&family=Noto+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ══ RESET ══ */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:'Manrope',sans-serif;background:#fff;color:#0A0A0A;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{text-decoration:none;color:inherit}
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-thumb{background:#C8470E}
+
+/* ══ VARIABLES ══ */
+:root{
+  --orange:#C8470E;
+  --orange2:#E55A1C;
+  --orange-pale:#FEF0E8;
+  --dark:#0A0A0A;
+  --dark2:#1C1C1C;
+  --mid:#3A3A3A;
+  --gray:#6B6B6B;
+  --light:#F5F5F5;
+  --border:#E5E5E5;
+  --white:#FFFFFF;
+  --arabic:'Noto Sans Arabic',sans-serif;
+}
+
+/* ══ RTL support ══ */
+[dir="rtl"]{font-family:var(--arabic),'Manrope',sans-serif}
+[dir="rtl"] .s-eyebrow::before{display:none}
+[dir="rtl"] .s-eyebrow::after{content:'';display:block;width:20px;height:2px;background:var(--orange);order:1}
+[dir="rtl"] .hero-tag::before{display:none}
+[dir="rtl"] .ticker-track{animation:ticker-rtl 30s linear infinite}
+@keyframes ticker-rtl{0%{transform:translateX(-50%)}100%{transform:translateX(0)}}
+
+/* ══ PROGRESS ══ */
+#progress{position:fixed;top:0;left:0;right:0;height:3px;z-index:1000;background:transparent}
+#prog-fill{height:100%;width:0%;background:var(--orange);transition:width .1s}
+
+/* ══ NAV ══ */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:900;
+  background:rgba(255,255,255,.97);backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);
+  height:68px;display:flex;align-items:center;padding:0 5%;
+  transition:box-shadow .3s
+}
+nav.scrolled{box-shadow:0 2px 24px rgba(0,0,0,.07)}
+.nav-inner{width:100%;max-width:1300px;margin:0 auto;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{display:flex;align-items:center;gap:.5rem;font-size:1.15rem;font-weight:800;letter-spacing:-.01em;color:var(--dark)}
+.logo-dot{width:9px;height:9px;border-radius:50%;background:var(--orange)}
+.nav-links{display:flex;align-items:center;gap:2.5rem}
+.nav-link{font-size:.78rem;font-weight:600;letter-spacing:.05em;color:var(--gray);transition:color .2s;text-transform:uppercase}
+.nav-link:hover{color:var(--dark)}
+.nav-right{display:flex;align-items:center;gap:.8rem}
+
+/* Lang toggle 3 langs */
+.lang-sw{display:flex;border:1px solid var(--border);border-radius:4px;overflow:hidden}
+.lb{font-size:.7rem;font-weight:700;padding:.26rem .65rem;border:none;cursor:pointer;background:transparent;color:var(--gray);font-family:'Manrope',sans-serif;transition:all .2s}
+.lb.on{background:var(--orange);color:#fff}
+
+.nav-cta{font-size:.78rem;font-weight:700;padding:.6rem 1.4rem;background:var(--dark);color:#fff;border-radius:4px;transition:all .3s;letter-spacing:.03em}
+.nav-cta:hover{background:var(--orange)}
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer}
+.burger span{display:block;width:22px;height:2px;background:var(--dark);border-radius:2px;transition:all .3s}
+
+/* Mobile menu */
+.mob{display:none;position:fixed;inset:0;z-index:800;background:#fff;flex-direction:column;padding:5.5rem 5% 3rem;gap:0}
+.mob.open{display:flex}
+.mob-link{font-size:1.9rem;font-weight:800;letter-spacing:-.02em;padding:1rem 0;border-bottom:1px solid var(--border);color:var(--dark);transition:color .2s}
+.mob-link:hover{color:var(--orange)}
+.mob-foot{margin-top:auto;padding-top:2rem;display:flex;flex-direction:column;gap:1rem}
+
+/* ══ HERO ══ */
+.hero{min-height:100vh;background:var(--white);display:flex;flex-direction:column;justify-content:center;padding:9rem 5% 5rem;position:relative;overflow:hidden}
+
+/* Pure CSS decorative shapes */
+.hero-shape1{position:absolute;right:0;top:0;bottom:0;width:48%;background:var(--light);clip-path:polygon(6% 0,100% 0,100% 100%,0 100%);z-index:0}
+.hero-accent-line{position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--orange);z-index:1}
+.hero-circle{position:absolute;right:8%;top:15%;width:320px;height:320px;border-radius:50%;background:transparent;border:1px solid var(--border);z-index:0;opacity:.5}
+.hero-circle2{position:absolute;right:14%;top:22%;width:200px;height:200px;border-radius:50%;background:transparent;border:1px solid rgba(200,71,14,.15);z-index:0}
+
+.hero-inner{position:relative;z-index:2;max-width:1300px;margin:0 auto;width:100%;display:grid;grid-template-columns:1.05fr .95fr;gap:5rem;align-items:center}
+
+.hero-eyebrow{font-size:.7rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--orange);display:flex;align-items:center;gap:.6rem;margin-bottom:1.6rem;opacity:0;animation:fadeUp .6s .2s forwards}
+.hero-eyebrow::before{content:'';display:block;width:22px;height:2px;background:var(--orange)}
+
+.hero-h1{font-size:clamp(2.6rem,4.2vw,5rem);font-weight:800;line-height:1.07;letter-spacing:-.03em;color:var(--dark);margin-bottom:1.6rem;opacity:0;animation:fadeUp .6s .35s forwards}
+.hero-h1 em{font-family:'Playfair Display',serif;font-style:italic;color:var(--orange);font-weight:700}
+
+.hero-desc{font-size:1rem;color:var(--gray);line-height:1.85;max-width:480px;margin-bottom:2.2rem;opacity:0;animation:fadeUp .6s .5s forwards}
+
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;opacity:0;animation:fadeUp .6s .65s forwards}
+.btn-main{display:inline-flex;align-items:center;gap:.5rem;padding:.88rem 2rem;background:var(--orange);color:#fff;font-weight:700;font-size:.83rem;letter-spacing:.04em;border-radius:4px;border:none;cursor:pointer;transition:all .3s}
+.btn-main:hover{background:var(--orange2);transform:translateY(-2px);box-shadow:0 8px 24px rgba(200,71,14,.3)}
+.btn-outline{display:inline-flex;align-items:center;gap:.5rem;padding:.88rem 2rem;background:transparent;color:var(--dark);font-weight:700;font-size:.83rem;letter-spacing:.04em;border-radius:4px;border:1.5px solid var(--border);cursor:pointer;transition:all .3s}
+.btn-outline:hover{border-color:var(--dark)}
+
+/* Hero right card */
+.hero-card{background:#fff;border:1px solid var(--border);border-radius:10px;box-shadow:0 8px 40px rgba(0,0,0,.07);overflow:hidden;opacity:0;animation:fadeUp .6s .5s forwards}
+.hc-top{background:var(--dark);padding:1.2rem 1.5rem;display:flex;align-items:center;justify-content:space-between}
+.hc-top-title{font-size:.68rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.45)}
+.hc-live{display:flex;align-items:center;gap:.4rem;font-size:.65rem;font-weight:700;color:#4ADE80;letter-spacing:.1em}
+.hc-live-dot{width:6px;height:6px;background:#4ADE80;border-radius:50%;animation:blink 2s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+.hc-rows{}
+.hc-row{display:flex;justify-content:space-between;align-items:center;padding:.9rem 1.5rem;border-bottom:1px solid var(--border);transition:background .2s}
+.hc-row:last-of-type{border-bottom:none}
+.hc-row:hover{background:var(--light)}
+.hc-lbl{font-size:.76rem;font-weight:500;color:var(--gray)}
+.hc-val{font-size:.8rem;font-weight:700;color:var(--dark)}
+.hc-val.orange{color:var(--orange)}
+.hc-val.green{color:#15803D}
+.hc-cells{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--border)}
+.hc-cell{padding:1.1rem 1rem;text-align:center;background:var(--light);border-right:1px solid var(--border)}
+.hc-cell:last-child{border-right:none}
+.hc-cell-n{font-size:1.5rem;font-weight:800;color:var(--orange);display:block;line-height:1}
+.hc-cell-l{font-size:.6rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--gray);display:block;margin-top:.2rem}
+
+/* Pills */
+.hero-pills{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:2rem;opacity:0;animation:fadeUp .6s .8s forwards}
+.pill{font-size:.7rem;font-weight:600;letter-spacing:.06em;padding:.35rem .85rem;background:var(--orange-pale);color:var(--orange);border:1px solid rgba(200,71,14,.2);border-radius:100px}
+
+/* ══ TICKER ══ */
+.ticker{background:var(--dark);padding:.85rem 0;overflow:hidden;white-space:nowrap}
+.ticker-track{display:inline-flex;animation:ticker 30s linear infinite}
+.ticker-item{display:inline-flex;align-items:center;gap:.5rem;font-size:.7rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.35);padding:0 2.5rem}
+.ticker-sep{color:var(--orange);font-size:.5rem}
+@keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* ══ SECTIONS ══ */
+.sec{padding:7rem 5%}
+.sec-white{background:#fff}
+.sec-light{background:var(--light)}
+.sec-dark{background:var(--dark);color:#fff}
+.sec-orange{background:var(--orange);color:#fff}
+.sec-in{max-width:1300px;margin:0 auto}
+
+.s-tag{font-size:.7rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--orange);display:flex;align-items:center;gap:.6rem;margin-bottom:.9rem}
+.s-tag::before{content:'';display:block;width:20px;height:2px;background:var(--orange)}
+.s-tag.white{color:rgba(255,255,255,.6)}
+.s-tag.white::before{background:rgba(255,255,255,.4)}
+
+h2.s-h2{font-size:clamp(1.9rem,3.2vw,3rem);font-weight:800;letter-spacing:-.02em;line-height:1.15;margin-bottom:1rem}
+h2.s-h2 em{font-family:'Playfair Display',serif;font-style:italic;color:var(--orange);font-weight:700}
+h2.s-h2.light em{color:rgba(255,255,255,.7)}
+.s-sub{font-size:.97rem;color:var(--gray);line-height:1.8;max-width:540px}
+.s-sub.light{color:rgba(255,255,255,.55)}
+
+/* Reveal */
+.r{opacity:0;transform:translateY(24px);transition:opacity .75s ease,transform .75s ease}
+.r.v{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}.d5{transition-delay:.5s}
+
+/* ══ SERVICES ══ */
+.svc-intro{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:end;margin-bottom:4rem}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border)}
+.svc-card{background:#fff;padding:2.5rem;position:relative;overflow:hidden;transition:all .35s;cursor:default}
+.svc-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--orange);transform:scaleX(0);transform-origin:left;transition:transform .35s}
+.svc-card:hover{background:var(--orange-pale)}
+.svc-card:hover::before{transform:scaleX(1)}
+.svc-n{font-size:3.5rem;font-weight:800;color:rgba(200,71,14,.07);line-height:1;margin-bottom:1.2rem;display:block}
+.svc-icon{width:44px;height:44px;background:var(--orange-pale);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:1.3rem}
+.svc-card h3{font-size:1rem;font-weight:800;margin-bottom:.75rem;color:var(--dark);letter-spacing:-.01em}
+.svc-card p{font-size:.84rem;color:var(--gray);line-height:1.75}
+.svc-link{display:inline-flex;align-items:center;gap:.4rem;font-size:.75rem;font-weight:700;color:var(--orange);margin-top:1.2rem;letter-spacing:.04em}
+.svc-link svg{transition:transform .2s}
+.svc-card:hover .svc-link svg{transform:translateX(4px)}
+
+/* ══ HOW IT WORKS ══ */
+.chain-header{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:end;margin-bottom:4rem}
+.chain-steps{display:grid;grid-template-columns:repeat(4,1fr);position:relative;gap:0}
+.chain-line{position:absolute;top:23px;left:12%;right:12%;height:1px;background:var(--border);z-index:0}
+.chain-step{text-align:center;padding:0 1rem;position:relative;z-index:1}
+.cs-bubble{width:48px;height:48px;border-radius:50%;background:#fff;border:2px solid var(--border);display:flex;align-items:center;justify-content:center;margin:0 auto 1.3rem;font-size:.78rem;font-weight:800;color:var(--gray);transition:all .3s}
+.chain-step.hl .cs-bubble{background:var(--orange);border-color:var(--orange);color:#fff;box-shadow:0 4px 16px rgba(200,71,14,.35)}
+.chain-step h4{font-size:.88rem;font-weight:800;margin-bottom:.45rem;color:var(--dark)}
+.chain-step p{font-size:.78rem;color:var(--gray);line-height:1.6}
+.cs-badge{display:inline-block;margin-top:.7rem;font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--orange);background:var(--orange-pale);padding:.2rem .6rem;border-radius:100px}
+
+/* Intermediary highlight box */
+.chain-highlight{margin-top:3rem;padding:1.8rem 2rem;background:var(--dark);border-radius:6px;display:flex;align-items:center;gap:1.5rem}
+.ch-ico{width:46px;height:46px;background:var(--orange);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.chain-highlight p{font-size:.9rem;color:rgba(255,255,255,.8);line-height:1.7}
+.chain-highlight strong{color:#fff}
+
+/* ══ STATS ══ */
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+.stat-box{padding:3rem 2rem;text-align:center;border-right:1px solid rgba(255,255,255,.08);transition:background .3s}
+.stat-box:last-child{border-right:none}
+.stat-box:hover{background:rgba(255,255,255,.03)}
+.stat-num{font-size:3.5rem;font-weight:800;display:block;line-height:1;margin-bottom:.5rem;color:#fff}
+.stat-num b{color:var(--orange2)}
+.stat-lbl{font-size:.68rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.35)}
+
+/* ══ MARKETS ══ */
+.mkt-layout{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
+.mkt-list{display:flex;flex-direction:column;gap:1px;margin-top:2rem}
+.mkt-item{display:flex;align-items:center;gap:1.4rem;padding:1.3rem 1.5rem;background:#fff;border:1px solid var(--border);transition:all .3s;position:relative;overflow:hidden}
+.mkt-item::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--orange);transform:scaleY(0);transition:transform .3s}
+.mkt-item:hover{background:var(--orange-pale);border-color:rgba(200,71,14,.2)}
+.mkt-item:hover::before{transform:scaleY(1)}
+.mkt-flag{width:40px;height:27px;border-radius:2px;overflow:hidden;flex-shrink:0}
+.mkt-flag svg{width:100%;height:100%}
+.mkt-info{flex:1}
+.mkt-info h4{font-size:.9rem;font-weight:700;margin-bottom:.2rem;color:var(--dark)}
+.mkt-info p{font-size:.76rem;color:var(--gray)}
+.mkt-pill{font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--orange);background:var(--orange-pale);border:1px solid rgba(200,71,14,.2);padding:.2rem .65rem;border-radius:100px;white-space:nowrap}
+
+/* Why us cards */
+.why-cards{display:flex;flex-direction:column;gap:1rem;margin-top:2rem}
+.why-card{padding:1.6rem 1.8rem;background:#fff;border:1px solid var(--border);border-radius:6px;transition:all .35s}
+.why-card:hover{border-color:rgba(200,71,14,.3);box-shadow:0 4px 20px rgba(0,0,0,.06);transform:translateY(-2px)}
+.wc-head{display:flex;align-items:center;gap:.9rem;margin-bottom:.7rem}
+.wc-icon{width:36px;height:36px;background:var(--orange-pale);border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.why-card h4{font-size:.9rem;font-weight:800;color:var(--dark)}
+.why-card p{font-size:.82rem;color:var(--gray);line-height:1.7}
+
+/* ══ HOW WE EARN ══ */
+.earn-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}
+.earn-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:2rem;transition:all .3s}
+.earn-card:hover{background:rgba(255,255,255,.08);border-color:rgba(200,71,14,.4)}
+.earn-n{font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:700;color:var(--orange2);display:block;margin-bottom:.5rem}
+.earn-card h4{font-size:.88rem;font-weight:700;color:#fff;margin-bottom:.5rem}
+.earn-card p{font-size:.8rem;color:rgba(255,255,255,.45);line-height:1.65}
+
+/* ══ PROCESS ══ */
+.process-steps{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border);border:1px solid var(--border);margin-top:3rem}
+.ps-item{background:#fff;padding:2.2rem 2.5rem;display:flex;gap:1.5rem;align-items:flex-start;transition:background .3s;position:relative;overflow:hidden}
+.ps-item::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--orange);transform:scaleX(0);transition:transform .4s}
+.ps-item:hover{background:var(--orange-pale)}
+.ps-item:hover::after{transform:scaleX(1)}
+.ps-n{font-size:2.5rem;font-weight:800;color:rgba(200,71,14,.1);line-height:1;flex-shrink:0;width:48px}
+.ps-item h4{font-size:.92rem;font-weight:800;color:var(--dark);margin-bottom:.4rem}
+.ps-item p{font-size:.83rem;color:var(--gray);line-height:1.7}
+
+/* ══ TRUST SECTION ══ */
+.trust-layout{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center}
+.trust-left h2{margin-bottom:1.2rem}
+.trust-left p{font-size:.95rem;color:var(--gray);line-height:1.8;margin-bottom:1.8rem}
+.trust-checks{display:flex;flex-direction:column;gap:.7rem}
+.tc{display:flex;align-items:center;gap:.8rem;font-size:.85rem;font-weight:600;color:var(--dark)}
+.tc-dot{width:20px;height:20px;background:var(--orange);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.trust-right{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.tr-card{padding:1.8rem;background:var(--light);border-left:3px solid var(--orange);border-radius:4px;transition:all .3s}
+.tr-card:hover{background:var(--orange-pale);transform:translateX(4px)}
+.tr-card h4{font-size:.88rem;font-weight:800;color:var(--dark);margin-bottom:.45rem}
+.tr-card p{font-size:.79rem;color:var(--gray);line-height:1.6}
+
+/* ══ CONTACT ══ */
+.ct-layout{display:grid;grid-template-columns:1fr 1.35fr;gap:6rem;align-items:start}
+.ct-left h2{margin-bottom:1rem}
+.ct-left p{font-size:.94rem;color:var(--gray);line-height:1.8;margin-bottom:2rem}
+.ct-items{display:flex;flex-direction:column;gap:.8rem}
+.ct-item{display:flex;align-items:center;gap:1rem;padding:1rem 1.2rem;background:var(--light);border-radius:6px;transition:all .3s}
+.ct-item:hover{background:var(--orange-pale)}
+.ct-ico{width:36px;height:36px;background:#fff;border:1px solid var(--border);border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.ct-lbl{font-size:.62rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gray)}
+.ct-val{font-size:.87rem;font-weight:600;color:var(--dark)}
+
+/* Form */
+.form{display:flex;flex-direction:column;gap:1.1rem}
+.f-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.fg{display:flex;flex-direction:column;gap:.35rem}
+.fg label{font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gray)}
+.fg input,.fg textarea,.fg select{background:var(--light);border:1.5px solid var(--border);border-radius:4px;color:var(--dark);padding:.82rem 1rem;font-family:'Manrope',sans-serif;font-size:.88rem;outline:none;transition:border-color .25s;width:100%}
+.fg input::placeholder,.fg textarea::placeholder{color:#bbb}
+.fg input:focus,.fg textarea:focus,.fg select:focus{border-color:var(--orange);background:#fff}
+.fg textarea{resize:vertical;min-height:100px}
+.fg select option{background:#fff}
+.form-note{font-size:.72rem;color:var(--gray);line-height:1.5}
+.form-note b{color:var(--dark)}
+
+/* ══ FOOTER ══ */
+footer{background:var(--dark2);padding:4rem 5% 2rem;border-top:1px solid #2a2a2a}
+.ft-in{max-width:1300px;margin:0 auto}
+.ft-top{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:4rem;margin-bottom:3rem;padding-bottom:3rem;border-bottom:1px solid #2a2a2a}
+.ft-brand h3{font-size:1.1rem;font-weight:800;color:#fff;margin-bottom:.7rem}
+.ft-brand p{font-size:.8rem;color:#666;line-height:1.7}
+.ft-col h4{font-size:.68rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:#444;margin-bottom:.9rem}
+.ft-col a{display:block;font-size:.82rem;color:#777;margin-bottom:.55rem;transition:color .2s}
+.ft-col a:hover{color:#fff}
+.ft-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.ft-bottom p{font-size:.72rem;color:#555}
+
+/* ══ ANIMATIONS ══ */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+
+/* ══ JOURNEY STRIP ══ */
+.journey-strip { margin-top: 3rem; }
+.js-track-wrap {
+  position: relative; overflow: hidden;
+  border-radius: 10px; background: var(--dark);
+}
+.js-track {
+  display: flex;
+  transition: transform 0.7s cubic-bezier(0.77,0,0.18,1);
+}
+.js-scene { min-width: 100%; position: relative; }
+.js-img-wrap { position: relative; height: 420px; overflow: hidden; }
+.js-img-wrap img {
+  width: 100%; height: 100%; object-fit: cover;
+  display: block;
+  transition: transform 8s ease;
+  transform: scale(1.04);
+}
+.js-scene.active .js-img-wrap img { transform: scale(1); }
+.js-img-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(10,10,10,0.75) 0%, rgba(10,10,10,0.15) 50%, rgba(10,10,10,0.3) 100%);
+}
+.js-scene-label {
+  position: absolute; bottom: 1.8rem; left: 2rem;
+  display: flex; align-items: center; gap: 1rem;
+}
+.js-scene-n {
+  font-size: 3rem; font-weight: 800; color: rgba(255,255,255,0.15);
+  line-height: 1; font-family: 'Manrope', sans-serif;
+}
+.js-scene-t {
+  font-size: 1.6rem; font-weight: 800; color: #fff;
+  letter-spacing: -0.02em; font-family: 'Manrope', sans-serif;
+}
+/* Dots */
+.js-dots {
+  position: absolute; bottom: 1rem; right: 2rem;
+  display: flex; gap: 0.5rem; z-index: 10;
+}
+.js-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: rgba(255,255,255,0.3); cursor: pointer;
+  transition: all 0.3s; border: none;
+}
+.js-dot.active { background: var(--orange); transform: scale(1.3); }
+/* Arrows */
+.js-prev, .js-next {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  z-index: 10; width: 44px; height: 44px; border-radius: 50%;
+  background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2);
+  color: #fff; font-size: 1.1rem; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.3s; backdrop-filter: blur(8px);
+}
+.js-prev { left: 1rem; }
+.js-next { right: 1rem; }
+.js-prev:hover, .js-next:hover { background: var(--orange); border-color: var(--orange); }
+/* Info strip */
+.js-info {
+  display: flex; align-items: center; gap: 1.5rem;
+  padding: 1.4rem 1.8rem;
+  background: var(--dark); border-radius: 0 0 10px 10px;
+  border-top: 3px solid var(--orange);
+  transition: all 0.4s;
+}
+.js-info-n {
+  font-size: 2.5rem; font-weight: 800;
+  color: rgba(200,71,14,0.2); line-height: 1;
+  flex-shrink: 0; width: 52px;
+  font-family: 'Manrope', sans-serif;
+}
+.js-info-h {
+  font-size: 1rem; font-weight: 800; color: #fff;
+  margin-bottom: 0.3rem; font-family: 'Manrope', sans-serif;
+}
+.js-info-p { font-size: 0.82rem; color: rgba(255,255,255,0.45); line-height: 1.6; font-family: 'Manrope', sans-serif; }
+.js-info-badge {
+  margin-left: auto; flex-shrink: 0;
+  font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--orange);
+  background: rgba(200,71,14,0.1); border: 1px solid rgba(200,71,14,0.25);
+  padding: 0.35rem 0.8rem; border-radius: 100px; white-space: nowrap;
+}
+@media(max-width:600px){
+  .js-img-wrap { height: 260px; }
+  .js-scene-t { font-size: 1.1rem; }
+  .js-info { flex-wrap: wrap; padding: 1.2rem; }
+  .js-info-badge { margin-left: 0; }
+  .js-prev, .js-next { width: 36px; height: 36px; font-size: 0.9rem; }
+}
+
+/* ══ TOAST ══ */
+.toast{position:fixed;bottom:2rem;right:2rem;z-index:9999;padding:1rem 1.4rem;border-radius:8px;font-size:.85rem;font-weight:600;max-width:360px;display:flex;align-items:center;gap:.75rem;transform:translateY(120px);opacity:0;transition:transform .4s cubic-bezier(.34,1.4,.64,1),opacity .4s;pointer-events:none;box-shadow:0 8px 32px rgba(0,0,0,.2)}
+.toast.show{transform:translateY(0);opacity:1;pointer-events:auto}
+.toast.success{background:#0a2e18;color:#4ADE80;border:1px solid rgba(74,222,128,.2)}
+.toast.error{background:#2e0a0a;color:#f87171;border:1px solid rgba(248,113,113,.2)}
+@media(max-width:600px){.toast{left:1rem;right:1rem;bottom:1rem;max-width:none}}
+
+/* ══ RESPONSIVE ══ */
+@media(max-width:1100px){
+  .hero-inner{grid-template-columns:1fr;gap:3rem}
+  .hero-shape1,.hero-circle,.hero-circle2{display:none}
+  .hero-card{max-width:500px}
+  .svc-intro,.chain-header{grid-template-columns:1fr;gap:2rem}
+  .mkt-layout,.trust-layout,.ct-layout{grid-template-columns:1fr;gap:3rem}
+  .trust-right{grid-template-columns:1fr 1fr}
+  .ft-top{grid-template-columns:1fr 1fr;gap:2rem}
+  .chain-steps{grid-template-columns:repeat(2,1fr);gap:2rem}
+  .chain-line{display:none}
+}
+@media(max-width:900px){
+  .nav-links,.nav-cta{display:none}
+  .burger{display:flex}
+  .svc-grid{grid-template-columns:1fr;gap:0}
+  .stats-grid{grid-template-columns:repeat(2,1fr)}
+  .earn-grid{grid-template-columns:1fr}
+  .process-steps{grid-template-columns:1fr}
+  .sec{padding:5rem 5%}
+  .hero{padding:8rem 5% 4rem}
+}
+@media(max-width:600px){
+  nav{padding:0 4%;height:60px}
+  .hero{padding:7rem 4% 4rem}
+  .sec{padding:4rem 4%}
+  .hero-h1{font-size:2.3rem}
+  .hero-btns{flex-direction:column}
+  .btn-main,.btn-outline{justify-content:center}
+  .stats-grid{grid-template-columns:1fr 1fr}
+  .stat-num{font-size:2.8rem}
+  .earn-grid{grid-template-columns:1fr}
+  .trust-right{grid-template-columns:1fr}
+  .f-row{grid-template-columns:1fr}
+  .ft-top{grid-template-columns:1fr;gap:2rem}
+  .ft-bottom{flex-direction:column;text-align:center}
+  .hero-pills{gap:.4rem}
+  .pill{font-size:.65rem;padding:.3rem .7rem}
+}
+</style>
+</head>
+<body>
+
+<div id="progress"><div id="prog-fill"></div></div>
+
+<!-- ══ NAV ══ -->
+<nav id="nav">
+  <div class="nav-inner">
+    <div class="nav-logo"><div class="logo-dot"></div>NEXOIL</div>
+    <div class="nav-links">
+      <a href="#services" class="nav-link" data-t="nav_services">Services</a>
+      <a href="#how" class="nav-link" data-t="nav_how">How It Works</a>
+      <a href="#markets" class="nav-link" data-t="nav_markets">Markets</a>
+      <a href="#model" class="nav-link" data-t="nav_model">Our Model</a>
+      <a href="#contact" class="nav-link" data-t="nav_contact">Contact</a>
+    </div>
+    <div class="nav-right">
+      <div class="lang-sw">
+        <button class="lb on" onclick="setLang('en')">EN</button>
+        <button class="lb" onclick="setLang('fr')">FR</button>
+        <button class="lb" onclick="setLang('ar')">AR</button>
+      </div>
+      <a href="#contact" class="nav-cta" data-t="nav_cta">Get In Touch</a>
+      <button class="burger" onclick="toggleMob()" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mob" id="mob">
+  <a href="#services" class="mob-link" onclick="toggleMob()" data-t="nav_services">Services</a>
+  <a href="#how" class="mob-link" onclick="toggleMob()" data-t="nav_how">How It Works</a>
+  <a href="#markets" class="mob-link" onclick="toggleMob()" data-t="nav_markets">Markets</a>
+  <a href="#model" class="mob-link" onclick="toggleMob()" data-t="nav_model">Our Model</a>
+  <a href="#contact" class="mob-link" onclick="toggleMob()" data-t="nav_contact">Contact</a>
+  <div class="mob-foot">
+    <div class="lang-sw" style="align-self:flex-start">
+      <button class="lb on" onclick="setLang('en')">EN</button>
+      <button class="lb" onclick="setLang('fr')">FR</button>
+      <button class="lb" onclick="setLang('ar')">AR</button>
+    </div>
+    <a href="#contact" class="btn-main" onclick="toggleMob()" data-t="nav_cta">Get In Touch</a>
+  </div>
+</div>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="hero-shape1"></div>
+  <div class="hero-accent-line"></div>
+  <div class="hero-circle"></div>
+  <div class="hero-circle2"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-eyebrow" data-t="hero_tag">Oil & Gas Intermediary — Brussels, Belgium — Est. 2026</div>
+      <h1 class="hero-h1" data-t="hero_h1">Your trusted <em>bridge</em> between Middle East producers and <em>European</em> markets.</h1>
+      <p class="hero-desc" data-t="hero_desc">We connect Middle East oil & gas producers with European buyers, partners and investors. We handle the full commercial relationship — from first contact to signed agreement.</p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn-main" data-t="hero_cta1">Start a Partnership</a>
+        <a href="#how" class="btn-outline" data-t="hero_cta2">How It Works</a>
+      </div>
+      <div class="hero-pills">
+        <span class="pill" data-t="pill1">Crude Oil</span>
+        <span class="pill" data-t="pill2">Natural Gas</span>
+        <span class="pill" data-t="pill3">Refined Products</span>
+        <span class="pill" data-t="pill4">Petrochemicals</span>
+        <span class="pill" data-t="pill5">B2B Intermediation</span>
+      </div>
+    </div>
+    <div>
+      <div class="hero-card">
+        <div class="hc-top">
+          <span class="hc-top-title" data-t="card_title">Company Profile</span>
+          <span class="hc-live"><span class="hc-live-dot"></span><span data-t="card_status">ACTIVE</span></span>
+        </div>
+        <div class="hc-rows">
+          <div class="hc-row"><span class="hc-lbl" data-t="card_hq">Headquarters</span><span class="hc-val">Brussels, Belgium</span></div>
+          <div class="hc-row"><span class="hc-lbl" data-t="card_sector">Sector</span><span class="hc-val orange" data-t="card_sector_val">Oil & Gas Intermediation</span></div>
+          <div class="hc-row"><span class="hc-lbl" data-t="card_coverage">Coverage</span><span class="hc-val">Middle East ↔ Europe</span></div>
+          <div class="hc-row"><span class="hc-lbl" data-t="card_products">Products</span><span class="hc-val" data-t="card_products_val">Crude · Gas · Refined</span></div>
+          <div class="hc-row"><span class="hc-lbl" data-t="card_langs">Languages</span><span class="hc-val">EN · FR · AR</span></div>
+          <div class="hc-row"><span class="hc-lbl" data-t="card_fees">Fee Model</span><span class="hc-val green" data-t="card_fees_val">Commission-Based Only</span></div>
+        </div>
+        <div class="hc-cells">
+          <div class="hc-cell"><span class="hc-cell-n">4</span><span class="hc-cell-l" data-t="cell1">Markets</span></div>
+          <div class="hc-cell"><span class="hc-cell-n">3</span><span class="hc-cell-l" data-t="cell2">Languages</span></div>
+          <div class="hc-cell"><span class="hc-cell-n">0%</span><span class="hc-cell-l" data-t="cell3">Upfront</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-track">
+    <span class="ticker-item" data-t="tick1">Oil & Gas Intermediary <span class="ticker-sep">&#9632;</span></span>
+    <span class="ticker-item">Brussels, Belgium <span class="ticker-sep">&#9632;</span></span>
+    <span class="ticker-item" data-t="tick2">Middle East to Europe <span class="ticker-sep">&#9632;</span></span>
+    <span class="ticker-item">UAE · Saudi Arabia · Qatar · Kuwait <span class="ticker-sep">&#9632;</span></span>
+    <span class="ticker-item" data-t="tick3">Crude Oil · Natural Gas · Refined Products <span class="ticker-sep">&#9632;</span></span>
+    <span class="ticker-item" data-t="tick4">Commission-Based · No Upfront Fees <span class="ticker-sep">&#9632;</span></span>
+    <span class="ticker-item">EN · FR · AR <span class="ticker-sep">&#9632;</span></span>
+    <span class="ticker-item" data-t="tick1">Oil & Gas Intermediary <span class="ticker-sep">&#9632;</span></span>
+    <span class="ticker-item">Brussels, Belgium <span class="ticker-sep">&#9632;</span></span>
+    <span class="ticker-item" data-t="tick2">Middle East to Europe <span class="ticker-sep">&#9632;</span></span>
+    <span class="ticker-item">UAE · Saudi Arabia · Qatar · Kuwait <span class="ticker-sep">&#9632;</span></span>
+    <span class="ticker-item" data-t="tick3">Crude Oil · Natural Gas · Refined Products <span class="ticker-sep">&#9632;</span></span>
+    <span class="ticker-item" data-t="tick4">Commission-Based · No Upfront Fees <span class="ticker-sep">&#9632;</span></span>
+    <span class="ticker-item">EN · FR · AR <span class="ticker-sep">&#9632;</span></span>
+  </div>
+</div>
+
+<!-- ══ SERVICES ══ -->
+<section class="sec sec-white" id="services">
+  <div class="sec-in">
+    <div class="svc-intro">
+      <div>
+        <div class="s-tag r" data-t="svc_tag">What We Do</div>
+        <h2 class="s-h2 r d1" data-t="svc_h2">Our <em>intermediation</em> services</h2>
+      </div>
+      <p class="s-sub r d2" data-t="svc_sub">We are a pure intermediary — we do not own, store or transport products. We own the relationship and the network that moves business forward.</p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc-card r d1">
+        <span class="svc-n">01</span>
+        <div class="svc-icon"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 2L20 7V15L11 20L2 15V7L11 2Z" stroke="#C8470E" stroke-width="1.5" stroke-linejoin="round"/><circle cx="11" cy="11" r="3" fill="#C8470E" opacity=".3"/></svg></div>
+        <h3 data-t="svc1_h">Commercial Intermediation</h3>
+        <p data-t="svc1_p">We identify verified buyers and sellers on both sides — Middle East producers and European importers, refineries and distributors. We manage the full negotiation process and bring both parties to a signed commercial agreement.</p>
+        <span class="svc-link" data-t="svc_more">Learn more <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7H11M8 4L11 7L8 10" stroke="#C8470E" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+      </div>
+      <div class="svc-card r d2">
+        <span class="svc-n">02</span>
+        <div class="svc-icon"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="3" y="3" width="16" height="16" rx="2" stroke="#C8470E" stroke-width="1.5"/><path d="M7 11H15M11 7V15" stroke="#C8470E" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+        <h3 data-t="svc2_h">Market Entry & Regulatory Advisory</h3>
+        <p data-t="svc2_p">We guide Middle East companies through European regulatory requirements — customs classifications, import procedures, compliance standards and market entry strategy. Based in Brussels, we have direct knowledge of EU energy regulations.</p>
+        <span class="svc-link" data-t="svc_more">Learn more <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7H11M8 4L11 7L8 10" stroke="#C8470E" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+      </div>
+      <div class="svc-card r d3">
+        <span class="svc-n">03</span>
+        <div class="svc-icon"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="8" stroke="#C8470E" stroke-width="1.5"/><path d="M8 11L10 13L14 9" stroke="#C8470E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h3 data-t="svc3_h">Investment Facilitation</h3>
+        <p data-t="svc3_p">We connect Middle East investors with European energy assets, infrastructure projects and technology companies. We facilitate introductions, support due diligence coordination and help structure deal frameworks on both sides of the negotiation.</p>
+        <span class="svc-link" data-t="svc_more">Learn more <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7H11M8 4L11 7L8 10" stroke="#C8470E" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+      </div>
+      <div class="svc-card r d1">
+        <span class="svc-n">04</span>
+        <div class="svc-icon"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M4 11H18M14 7L18 11L14 15" stroke="#C8470E" stroke-width="1.5" stroke-linecap="round"/><path d="M2 6V16" stroke="#C8470E" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+        <h3 data-t="svc4_h">Supply Chain Intermediation</h3>
+        <p data-t="svc4_p">We cover the full petroleum supply chain — from extraction and depot storage, through transportation and logistics coordination, to refinery intake and final distribution. We are the single point of contact managing all commercial relationships along the chain.</p>
+        <span class="svc-link" data-t="svc_more">Learn more <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7H11M8 4L11 7L8 10" stroke="#C8470E" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+      </div>
+      <div class="svc-card r d2">
+        <span class="svc-n">05</span>
+        <div class="svc-icon"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 3C7 3 4 6 4 10c0 5 7 10 7 10s7-5 7-10c0-4-3-7-7-7z" stroke="#C8470E" stroke-width="1.5" fill="none"/><circle cx="11" cy="10" r="2.5" stroke="#C8470E" stroke-width="1.5"/></svg></div>
+        <h3 data-t="svc5_h">Network & Relationship Building</h3>
+        <p data-t="svc5_p">In the energy sector, deals happen between people — not companies. We invest in long-term relationships with decision-makers on both sides. Our trilingual team (EN · FR · AR) removes communication barriers and builds the trust that makes transactions possible.</p>
+        <span class="svc-link" data-t="svc_more">Learn more <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7H11M8 4L11 7L8 10" stroke="#C8470E" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+      </div>
+      <div class="svc-card r d3">
+        <span class="svc-n">06</span>
+        <div class="svc-icon"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="4" y="8" width="14" height="10" rx="1" stroke="#C8470E" stroke-width="1.5"/><path d="M8 8V6a3 3 0 016 0v2" stroke="#C8470E" stroke-width="1.5"/><circle cx="11" cy="13" r="1.5" fill="#C8470E"/></svg></div>
+        <h3 data-t="svc6_h">Confidential Deal Structuring</h3>
+        <p data-t="svc6_p">All mandates are handled with full discretion. We act as a neutral intermediary — our role is to align interests, facilitate communication and create the conditions for a successful deal. We never disclose client identities without explicit authorization.</p>
+        <span class="svc-link" data-t="svc_more">Learn more <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7H11M8 4L11 7L8 10" stroke="#C8470E" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ HOW IT WORKS ══ -->
+<section class="sec sec-light" id="how">
+  <div class="sec-in">
+    <div class="chain-header">
+      <div>
+        <div class="s-tag r" data-t="how_tag">The Full Chain</div>
+        <h2 class="s-h2 r d1" data-t="how_h2">From <em>depot</em> to <em>distribution</em> — we connect every link</h2>
+      </div>
+      <p class="s-sub r d2" data-t="how_sub">We understand every stage of the petroleum supply chain. This allows us to intermediate at any point — and to speak the language of every stakeholder involved.</p>
+    </div>
+
+    <!-- ══ TRUCK JOURNEY STRIP ══ -->
+    <div class="journey-strip r d2">
+      <div class="js-track-wrap">
+        <div class="js-track" id="jsTrack">
+
+          <div class="js-scene active" id="scene0">
+            <div class="js-img-wrap">
+              <img src="images/scene1-depot.jpg" alt="Oil storage depot" style="width:100%;height:100%;object-fit:cover;display:block"/>
+              <div class="js-img-overlay"></div>
+              <div class="js-scene-label">
+                <span class="js-scene-n">01</span>
+                <span class="js-scene-t" id="scLabel0">Extraction &amp; Depot</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="js-scene" id="scene1">
+            <div class="js-img-wrap">
+              <img src="images/scene2-transport.jpg" alt="Oil tanker truck in transport" style="width:100%;height:100%;object-fit:cover;display:block"/>
+              <div class="js-img-overlay"></div>
+              <div class="js-scene-label">
+                <span class="js-scene-n">02</span>
+                <span class="js-scene-t" id="scLabel1">Transportation</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="js-scene" id="scene2">
+            <div class="js-img-wrap">
+              <img src="images/scene3-refinery.jpg" alt="Oil refinery industrial plant" style="width:100%;height:100%;object-fit:cover;display:block"/>
+              <div class="js-img-overlay"></div>
+              <div class="js-scene-label">
+                <span class="js-scene-n">03</span>
+                <span class="js-scene-t" id="scLabel2">Refinery</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="js-scene" id="scene3">
+            <div class="js-img-wrap">
+              <img src="images/scene4-distribution.jpg" alt="Fuel distribution offshore" style="width:100%;height:100%;object-fit:cover;display:block"/>
+              <div class="js-img-overlay"></div>
+              <div class="js-scene-label">
+                <span class="js-scene-n">04</span>
+                <span class="js-scene-t" id="scLabel3">Distribution</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="js-dots">
+          <span class="js-dot active" onclick="goScene(0)"></span>
+          <span class="js-dot" onclick="goScene(1)"></span>
+          <span class="js-dot" onclick="goScene(2)"></span>
+          <span class="js-dot" onclick="goScene(3)"></span>
+        </div>
+        <button class="js-prev" onclick="prevScene()">&#8592;</button>
+        <button class="js-next" onclick="nextScene()">&#8594;</button>
+      </div>
+      <div class="js-info">
+        <div class="js-info-n" id="jsInfoN">01</div>
+        <div style="flex:1">
+          <h4 class="js-info-h" id="jsInfoH">Extraction &amp; Depot</h4>
+          <p class="js-info-p" id="jsInfoP">Crude oil extracted from Middle East fields, stored at primary depots awaiting transport.</p>
+        </div>
+        <div class="js-info-badge" id="jsInfoBadge">UAE · KSA · QAT · KWT</div>
+      </div>
+    </div>
+
+    <div class="chain-highlight r d3">
+      <div class="ch-ico"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10H16M12 6L16 10L12 14" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <p data-t="chain_note"><strong>NEXOIL operates as the intermediary at every stage.</strong> We do not own the product — we own the relationship. We are the commercial bridge that enables transactions to happen between parties who would not otherwise find each other.</p>
+    </div>
+  </div>
+</section><section class="sec-dark">
+  <div style="max-width:1300px;margin:0 auto;padding:0 5%">
+    <div class="stats-grid">
+      <div class="stat-box r d1"><span class="stat-num"><b>4</b></span><span class="stat-lbl" data-t="stat1">Active Markets</span></div>
+      <div class="stat-box r d2"><span class="stat-num"><b>3</b></span><span class="stat-lbl" data-t="stat2">Languages Spoken</span></div>
+      <div class="stat-box r d3"><span class="stat-num"><b>0%</b></span><span class="stat-lbl" data-t="stat3">Upfront Fees</span></div>
+      <div class="stat-box r d4"><span class="stat-num"><b>100%</b></span><span class="stat-lbl" data-t="stat4">Commission-Based</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ MARKETS ══ -->
+<section class="sec sec-white" id="markets">
+  <div class="sec-in">
+    <div class="mkt-layout">
+      <div>
+        <div class="s-tag r" data-t="mkt_tag">Our Markets</div>
+        <h2 class="s-h2 r d1" data-t="mkt_h2">Active across the <em>Middle East</em></h2>
+        <p class="s-sub r d2" style="margin-bottom:0" data-t="mkt_sub">We have direct commercial access to the four major Middle East energy markets — home to over 40% of the world's proven oil reserves.</p>
+        <div class="mkt-list">
+          <div class="mkt-item r d1">
+            <div class="mkt-flag"><svg viewBox="0 0 40 27" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="9" fill="#00732F"/><rect y="9" width="40" height="9" fill="#fff"/><rect y="18" width="40" height="9" fill="#FF0000"/></svg></div>
+            <div class="mkt-info"><h4>United Arab Emirates</h4><p>ADNOC · ENOC · Dubai Petroleum</p></div>
+            <span class="mkt-pill" data-t="mkt_primary">Primary</span>
+          </div>
+          <div class="mkt-item r d2">
+            <div class="mkt-flag"><svg viewBox="0 0 40 27" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="9" fill="#006400"/><rect y="9" width="40" height="9" fill="#fff"/><rect y="18" width="40" height="9" fill="#006400"/><rect width="13" height="27" fill="#000"/></svg></div>
+            <div class="mkt-info"><h4 data-t="mkt_ksa">Saudi Arabia</h4><p>Saudi Aramco · SABIC · Vision 2030</p></div>
+            <span class="mkt-pill" data-t="mkt_primary">Primary</span>
+          </div>
+          <div class="mkt-item r d3">
+            <div class="mkt-flag"><svg viewBox="0 0 40 27" xmlns="http://www.w3.org/2000/svg"><rect width="14" height="27" fill="#8B0000"/><rect x="14" width="26" height="27" fill="#fff"/><path d="M14,0 L24,13.5 L14,27 Z" fill="#8B0000"/></svg></div>
+            <div class="mkt-info"><h4>Qatar</h4><p data-t="mkt_qat_sub">QatarEnergy · LNG world leader</p></div>
+            <span class="mkt-pill" data-t="mkt_active">Active</span>
+          </div>
+          <div class="mkt-item r d4">
+            <div class="mkt-flag"><svg viewBox="0 0 40 27" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="9" fill="#007A3D"/><rect y="9" width="40" height="9" fill="#fff"/><rect y="18" width="40" height="9" fill="#CE1126"/></svg></div>
+            <div class="mkt-info"><h4 data-t="mkt_kwt">Kuwait</h4><p>Kuwait Petroleum Corporation</p></div>
+            <span class="mkt-pill" data-t="mkt_active">Active</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="s-tag r" data-t="why_tag">Why Choose NEXOIL</div>
+        <div class="why-cards">
+          <div class="why-card r d1">
+            <div class="wc-head">
+              <div class="wc-icon"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="7" stroke="#C8470E" stroke-width="1.5"/><path d="M6 9C6 7 7 5 9 5s3 2 3 4-1 4-3 4-3-2-3-4z" stroke="#C8470E" stroke-width="1" fill="none"/><line x1="2" y1="9" x2="16" y2="9" stroke="#C8470E" stroke-width="1"/></svg></div>
+              <h4 data-t="why1_h">Trilingual — EN · FR · AR</h4>
+            </div>
+            <p data-t="why1_p">We communicate natively in English, French and Arabic — removing the language barriers that prevent deals from happening. No translation delays, no misunderstandings.</p>
+          </div>
+          <div class="why-card r d2">
+            <div class="wc-head">
+              <div class="wc-icon"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 2L16 6V10C16 13.5 13 16 9 17 5 16 2 13.5 2 10V6L9 2Z" stroke="#C8470E" stroke-width="1.5" fill="none"/><path d="M6 9L8 11L12 7" stroke="#C8470E" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+              <h4 data-t="why2_h">Brussels — Heart of the EU</h4>
+            </div>
+            <p data-t="why2_p">Located in the regulatory capital of Europe. We have direct knowledge of EU energy import regulations, customs procedures and compliance requirements — giving Middle East partners a real advantage in European markets.</p>
+          </div>
+          <div class="why-card r d3">
+            <div class="wc-head">
+              <div class="wc-icon"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 2C5.1 2 2 5.1 2 9s3.1 7 7 7 7-3.1 7-7-3.1-7-7-7z" stroke="#C8470E" stroke-width="1.5" fill="none"/><path d="M9 5v4l3 2" stroke="#C8470E" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+              <h4 data-t="why3_h">Commission Only — Zero Upfront</h4>
+            </div>
+            <p data-t="why3_p">We earn only when you succeed. Our commission is a small percentage of the transaction value, paid upon deal completion. This means we only take mandates we are confident we can close.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ OUR MODEL ══ -->
+<section class="sec sec-dark" id="model">
+  <div class="sec-in">
+    <div class="s-tag white r" data-t="model_tag">Our Business Model</div>
+    <h2 class="s-h2 light r d1" data-t="model_h2">How we earn — and why it <em>works for you</em></h2>
+    <div class="earn-grid">
+      <div class="earn-card r d1">
+        <span class="earn-n">0%</span>
+        <h4 data-t="earn1_h">Upfront Fees</h4>
+        <p data-t="earn1_p">We never charge retainer fees or upfront payments. If we do not close a deal, we do not earn. This structure ensures we only accept mandates we believe in.</p>
+      </div>
+      <div class="earn-card r d2">
+        <span class="earn-n">0.5–2%</span>
+        <h4 data-t="earn2_h">Commission Rate</h4>
+        <p data-t="earn2_p">Our intermediation fee is typically 0.5% to 2% of the transaction value, agreed in advance and transparently disclosed to both parties. On a $10M deal, that is $50K–$200K.</p>
+      </div>
+      <div class="earn-card r d3">
+        <span class="earn-n">100%</span>
+        <h4 data-t="earn3_h">Aligned Interests</h4>
+        <p data-t="earn3_p">Because we are paid on results, our interests are completely aligned with yours. We work harder, faster and smarter — because our success depends entirely on the success of our clients.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PROCESS ══ -->
+<section class="sec sec-white">
+  <div class="sec-in">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:end;margin-bottom:0" class="r">
+      <div>
+        <div class="s-tag" data-t="proc_tag">Our Process</div>
+        <h2 class="s-h2" data-t="proc_h2">How a <em>mandate</em> works</h2>
+      </div>
+      <p class="s-sub" data-t="proc_sub">From the first conversation to the signed agreement — a clear, structured process with full transparency at every step.</p>
+    </div>
+    <div class="process-steps" style="margin-top:3rem">
+      <div class="ps-item r d1"><span class="ps-n">01</span><div><h4 data-t="ps1_h">Initial Consultation</h4><p data-t="ps1_p">We meet with you — buyer or seller — to understand your needs, volume requirements, quality specifications and timeline. Everything discussed is strictly confidential.</p></div></div>
+      <div class="ps-item r d2"><span class="ps-n">02</span><div><h4 data-t="ps2_h">Mandate Agreement</h4><p data-t="ps2_p">We formalize our engagement with a clear mandate letter — defining scope, commission rate and terms. No obligations until both parties agree.</p></div></div>
+      <div class="ps-item r d3"><span class="ps-n">03</span><div><h4 data-t="ps3_h">Counterpart Identification</h4><p data-t="ps3_p">We activate our network to identify and qualify the right counterpart — a verified buyer, seller or investor who matches your requirements precisely.</p></div></div>
+      <div class="ps-item r d4"><span class="ps-n">04</span><div><h4 data-t="ps4_h">Introduction & Negotiation</h4><p data-t="ps4_p">We facilitate the introduction, manage communication between parties and support the negotiation process — always maintaining neutrality and discretion.</p></div></div>
+      <div class="ps-item r d5"><span class="ps-n">05</span><div><h4 data-t="ps5_h">Due Diligence Support</h4><p data-t="ps5_p">We assist with document coordination, regulatory verification and compliance checks — ensuring both parties have the information they need to proceed with confidence.</p></div></div>
+      <div class="ps-item r d1"><span class="ps-n">06</span><div><h4 data-t="ps6_h">Deal Closure</h4><p data-t="ps6_p">Once terms are agreed and the contract is signed, our commission is settled. The relationship does not end here — we continue to support both parties throughout execution.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TRUST ══ -->
+<section class="sec sec-light">
+  <div class="sec-in">
+    <div class="trust-layout">
+      <div class="trust-left">
+        <div class="s-tag r" data-t="trust_tag">Our Approach</div>
+        <h2 class="s-h2 r d1" data-t="trust_h2">We build <em>relationships,</em> not just transactions.</h2>
+        <p class="r d2" style="font-size:.95rem;color:var(--gray);line-height:1.8;margin-bottom:1.8rem" data-t="trust_p">In the energy sector, trust is the foundation of every deal. We invest in long-term relationships on both sides of the bridge — with producers in the Middle East and buyers in Europe. A single strong relationship is worth more than a hundred cold introductions.</p>
+        <div class="trust-checks r d3">
+          <div class="tc"><div class="tc-dot"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5L4 7L8 3" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></svg></div><span data-t="tc1">Direct access to Middle East decision-makers</span></div>
+          <div class="tc"><div class="tc-dot"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5L4 7L8 3" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></svg></div><span data-t="tc2">Deep understanding of regional business culture</span></div>
+          <div class="tc"><div class="tc-dot"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5L4 7L8 3" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></svg></div><span data-t="tc3">Strong European regulatory and commercial network</span></div>
+          <div class="tc"><div class="tc-dot"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5L4 7L8 3" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></svg></div><span data-t="tc4">Full discretion and confidentiality on all mandates</span></div>
+          <div class="tc"><div class="tc-dot"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5L4 7L8 3" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></svg></div><span data-t="tc5">Neutral intermediary — we represent the deal, not one side</span></div>
+        </div>
+      </div>
+      <div class="trust-right">
+        <div class="tr-card r d1"><h4 data-t="tr1_h">For Middle East Producers</h4><p data-t="tr1_p">Access to verified European buyers, refineries and distributors — with full regulatory guidance for EU market entry.</p></div>
+        <div class="tr-card r d2"><h4 data-t="tr2_h">For European Companies</h4><p data-t="tr2_p">Direct access to Middle East producers, exporters and investors — without the language and cultural barriers.</p></div>
+        <div class="tr-card r d3"><h4 data-t="tr3_h">For Investors</h4><p data-t="tr3_p">Introduction to qualified energy projects and assets on both sides — with our network doing the qualification work for you.</p></div>
+        <div class="tr-card r d4"><h4 data-t="tr4_h">Full Confidentiality</h4><p data-t="tr4_p">Client identities are never disclosed without explicit written authorization. Every mandate is handled with full professional discretion.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CONTACT ══ -->
+<section class="sec sec-white" id="contact">
+  <div class="sec-in">
+    <div class="ct-layout">
+      <div>
+        <div class="s-tag r" data-t="ct_tag">Get In Touch</div>
+        <h2 class="s-h2 r d1" data-t="ct_h2">Ready to explore an <em>opportunity?</em></h2>
+        <p class="r d2" style="font-size:.94rem;color:var(--gray);line-height:1.8;margin-bottom:2rem" data-t="ct_p">Whether you are a Middle East energy company looking for European buyers, or a European company seeking Middle East supply — reach out for a confidential, no-obligation first conversation.</p>
+        <div class="ct-items r d3">
+          <div class="ct-item">
+            <div class="ct-ico"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="1" y="3" width="14" height="10" rx="1" stroke="#C8470E" stroke-width="1.5"/><path d="M1 5L8 9L15 5" stroke="#C8470E" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+            <div><div class="ct-lbl">Email</div><div class="ct-val"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="8eede1e0faefedfacee0ebf6e1e7e2a3fde1e2fbfae7e1e0fda0ede1e3">[email&#160;protected]</a></div></div>
+          </div>
+          <div class="ct-item">
+            <div class="ct-ico"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="4" y="1" width="8" height="14" rx="2" stroke="#C8470E" stroke-width="1.5"/><circle cx="8" cy="12" r="1" fill="#C8470E"/><line x1="6" y1="4" x2="10" y2="4" stroke="#C8470E" stroke-width="1" stroke-linecap="round"/></svg></div>
+            <div><div class="ct-lbl">WhatsApp / Telegram</div><div class="ct-val" data-t="ct_wa">Available 7 days / 7</div></div>
+          </div>
+          <div class="ct-item">
+            <div class="ct-ico"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1C5.2 1 3 3.3 3 6.1 3 10.1 8 15 8 15s5-4.9 5-8.9C13 3.3 10.8 1 8 1z" stroke="#C8470E" stroke-width="1.5" fill="none"/><circle cx="8" cy="6" r="2" stroke="#C8470E" stroke-width="1.5"/></svg></div>
+            <div><div class="ct-lbl" data-t="ct_loc_lbl">Location</div><div class="ct-val">Brussels, Belgium — European Union</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="form r d2">
+        <div class="f-row">
+          <div class="fg"><label data-t="f_name">Full Name</label><input id="fName" type="text" placeholder="Your full name"></div>
+          <div class="fg"><label data-t="f_company">Company</label><input id="fCompany" type="text" placeholder="Company name"></div>
+        </div>
+        <div class="fg"><label>Email</label><input id="fEmail" type="email" placeholder="you@company.com"></div>
+        <div class="f-row">
+          <div class="fg">
+            <label data-t="f_country">Country</label>
+            <select id="fCountry">
+              <option value="" data-t="f_select">Select country</option>
+              <option>UAE</option><option>Saudi Arabia</option><option>Qatar</option>
+              <option>Kuwait</option><option>Belgium</option><option>Luxembourg</option>
+              <option>France</option><option>Netherlands</option><option>Germany</option><option>Other</option>
+            </select>
+          </div>
+          <div class="fg">
+            <label data-t="f_interest">I am looking for</label>
+            <select id="fInterest">
+              <option value="" data-t="f_select">Select</option>
+              <option data-t="f_opt1">Buyers for my product</option>
+              <option data-t="f_opt2">Suppliers / producers</option>
+              <option data-t="f_opt3">Investment opportunities</option>
+              <option data-t="f_opt4">Market entry support</option>
+              <option data-t="f_opt5">Other</option>
+            </select>
+          </div>
+        </div>
+        <div class="fg"><label data-t="f_msg">Message</label><textarea id="fMsg" placeholder="Describe your project, volume requirements or inquiry..."></textarea></div>
+        <p class="form-note r" data-t="f_note"><b>Confidentiality:</b> All information shared is treated with full discretion. We never disclose client details to third parties without written authorization.</p>
+        <button class="btn-main" id="sendBtn" onclick="sendMsg()" style="border:none;cursor:pointer;align-self:flex-start" data-t="f_send">Send Message</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Toast notification -->
+<div id="toast" class="toast" role="alert" aria-live="polite">
+  <span id="toastIco" aria-hidden="true"></span>
+  <span id="toastMsg"></span>
+</div>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="ft-in">
+    <div class="ft-top">
+      <div class="ft-brand">
+        <h3>NEXOIL</h3>
+        <p data-t="ft_desc">Oil & Gas Intermediary. Connecting Middle East producers with European markets. Brussels, Belgium — Est. 2026.</p>
+      </div>
+      <div class="ft-col">
+        <h4 data-t="ft_services">Services</h4>
+        <a href="#services" data-t="ft_s1">Commercial Intermediation</a>
+        <a href="#services" data-t="ft_s2">Market Entry Advisory</a>
+        <a href="#services" data-t="ft_s3">Investment Facilitation</a>
+        <a href="#services" data-t="ft_s4">Supply Chain Intermediation</a>
+        <a href="#services" data-t="ft_s5">Deal Structuring</a>
+      </div>
+      <div class="ft-col">
+        <h4 data-t="ft_markets">Markets</h4>
+        <a href="#markets">United Arab Emirates</a>
+        <a href="#markets">Saudi Arabia</a>
+        <a href="#markets">Qatar</a>
+        <a href="#markets">Kuwait</a>
+        <a href="#markets" data-t="ft_europe">Europe (buyers)</a>
+      </div>
+      <div class="ft-col">
+        <h4 data-t="ft_contact">Contact</h4>
+        <a href="/cdn-cgi/l/email-protection#8ae9e5e4feebe9fecae4eff2e5e3e6a7f9e5e6fffee3e5e4f9a4e9e5e7"><span class="__cf_email__" data-cfemail="d2b1bdbca6b3b1a692bcb7aabdbbbeffa1bdbea7a6bbbdbca1fcb1bdbf">[email&#160;protected]</span></a>
+        <a href="#contact">WhatsApp / Telegram</a>
+        <a href="#contact">Brussels, Belgium</a>
+      </div>
+    </div>
+    <div class="ft-bottom">
+      <p data-t="ft_copy">© 2026 Nexoil Solutions · Brussels, Belgium · All rights reserved</p>
+      <p data-t="ft_tagline">Oil & Gas Intermediation — Middle East & Europe</p>
+    </div>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// ══ TRANSLATIONS ══
+const T = {
+  en: {
+    nav_services:"Services", nav_how:"How It Works", nav_markets:"Markets",
+    nav_model:"Our Model", nav_contact:"Contact", nav_cta:"Get In Touch",
+    hero_tag:"Oil & Gas Intermediary — Brussels, Belgium — Est. 2026",
+    hero_h1:"Your trusted <em>bridge</em> between Middle East producers and <em>European</em> markets.",
+    hero_desc:"We connect Middle East oil & gas producers with European buyers, partners and investors. We handle the full commercial relationship — from first contact to signed agreement.",
+    hero_cta1:"Start a Partnership", hero_cta2:"How It Works",
+    pill1:"Crude Oil", pill2:"Natural Gas", pill3:"Refined Products", pill4:"Petrochemicals", pill5:"B2B Intermediation",
+    card_title:"Company Profile", card_status:"ACTIVE", card_hq:"Headquarters",
+    card_sector:"Sector", card_sector_val:"Oil & Gas Intermediation",
+    card_coverage:"Coverage", card_products:"Products", card_products_val:"Crude · Gas · Refined",
+    card_langs:"Languages", card_fees:"Fee Model", card_fees_val:"Commission-Based Only",
+    cell1:"Markets", cell2:"Languages", cell3:"Upfront",
+    tick1:"Oil & Gas Intermediary", tick2:"Middle East to Europe",
+    tick3:"Crude Oil · Natural Gas · Refined Products", tick4:"Commission-Based · No Upfront Fees",
+    svc_tag:"What We Do", svc_h2:"Our <em>intermediation</em> services",
+    svc_sub:"We are a pure intermediary — we do not own, store or transport products. We own the relationship and the network that moves business forward.",
+    svc1_h:"Commercial Intermediation", svc1_p:"We identify verified buyers and sellers on both sides — Middle East producers and European importers, refineries and distributors. We manage the full negotiation process and bring both parties to a signed commercial agreement.",
+    svc2_h:"Market Entry & Regulatory Advisory", svc2_p:"We guide Middle East companies through European regulatory requirements — customs classifications, import procedures, compliance standards and market entry strategy. Based in Brussels, we have direct knowledge of EU energy regulations.",
+    svc3_h:"Investment Facilitation", svc3_p:"We connect Middle East investors with European energy assets, infrastructure projects and technology companies. We facilitate introductions, support due diligence coordination and help structure deal frameworks on both sides of the negotiation.",
+    svc4_h:"Supply Chain Intermediation", svc4_p:"We cover the full petroleum supply chain — from extraction and depot storage, through transportation and logistics coordination, to refinery intake and final distribution. We are the single point of contact managing all commercial relationships along the chain.",
+    svc5_h:"Network & Relationship Building", svc5_p:"In the energy sector, deals happen between people — not companies. We invest in long-term relationships with decision-makers on both sides. Our trilingual team (EN · FR · AR) removes communication barriers and builds the trust that makes transactions possible.",
+    svc6_h:"Confidential Deal Structuring", svc6_p:"All mandates are handled with full discretion. We act as a neutral intermediary — our role is to align interests, facilitate communication and create the conditions for a successful deal. We never disclose client identities without explicit authorization.",
+    svc_more:"Learn more",
+    how_tag:"The Full Chain", how_h2:"From <em>depot</em> to <em>distribution</em> — we connect every link",
+    how_sub:"We understand every stage of the petroleum supply chain. This allows us to intermediate at any point — and to speak the language of every stakeholder involved.",
+    cs1_h:"Extraction & Depot", cs1_p:"Crude oil extracted from Middle East fields, stored at primary depots awaiting transport.",
+    cs2_h:"Transportation", cs2_p:"Pipeline and tanker transport from production sites to European receiving terminals.", cs2_badge:"Rotterdam · Antwerp · Marseille",
+    cs3_h:"Refinery", cs3_p:"Crude refined into gasoline, diesel, jet fuel and petrochemicals at European facilities.", cs3_badge:"Belgium · Netherlands · France",
+    cs4_h:"Distribution", cs4_p:"Refined products reach industry, power plants, airports and end consumers across Europe.", cs4_badge:"European End Market",
+    chain_note:"<strong>NEXOIL operates as the intermediary at every stage.</strong> We do not own the product — we own the relationship. We are the commercial bridge that enables transactions to happen between parties who would not otherwise find each other.",
+    stat1:"Active Markets", stat2:"Languages Spoken", stat3:"Upfront Fees", stat4:"Commission-Based",
+    mkt_tag:"Our Markets", mkt_h2:"Active across the <em>Middle East</em>",
+    mkt_sub:"We have direct commercial access to the four major Middle East energy markets — home to over 40% of the world's proven oil reserves.",
+    mkt_primary:"Primary", mkt_active:"Active", mkt_ksa:"Saudi Arabia",
+    mkt_qat_sub:"QatarEnergy · LNG world leader", mkt_kwt:"Kuwait",
+    why_tag:"Why Choose NEXOIL",
+    why1_h:"Trilingual — EN · FR · AR", why1_p:"We communicate natively in English, French and Arabic — removing the language barriers that prevent deals from happening. No translation delays, no misunderstandings.",
+    why2_h:"Brussels — Heart of the EU", why2_p:"Located in the regulatory capital of Europe. We have direct knowledge of EU energy import regulations, customs procedures and compliance requirements — giving Middle East partners a real advantage in European markets.",
+    why3_h:"Commission Only — Zero Upfront", why3_p:"We earn only when you succeed. Our commission is a small percentage of the transaction value, paid upon deal completion. This means we only take mandates we are confident we can close.",
+    model_tag:"Our Business Model", model_h2:"How we earn — and why it <em>works for you</em>",
+    earn1_h:"Upfront Fees", earn1_p:"We never charge retainer fees or upfront payments. If we do not close a deal, we do not earn. This structure ensures we only accept mandates we believe in.",
+    earn2_h:"Commission Rate", earn2_p:"Our intermediation fee is typically 0.5% to 2% of the transaction value, agreed in advance and transparently disclosed to both parties. On a $10M deal, that is $50K–$200K.",
+    earn3_h:"Aligned Interests", earn3_p:"Because we are paid on results, our interests are completely aligned with yours. We work harder, faster and smarter — because our success depends entirely on the success of our clients.",
+    proc_tag:"Our Process", proc_h2:"How a <em>mandate</em> works",
+    proc_sub:"From the first conversation to the signed agreement — a clear, structured process with full transparency at every step.",
+    ps1_h:"Initial Consultation", ps1_p:"We meet with you — buyer or seller — to understand your needs, volume requirements, quality specifications and timeline. Everything discussed is strictly confidential.",
+    ps2_h:"Mandate Agreement", ps2_p:"We formalize our engagement with a clear mandate letter — defining scope, commission rate and terms. No obligations until both parties agree.",
+    ps3_h:"Counterpart Identification", ps3_p:"We activate our network to identify and qualify the right counterpart — a verified buyer, seller or investor who matches your requirements precisely.",
+    ps4_h:"Introduction & Negotiation", ps4_p:"We facilitate the introduction, manage communication between parties and support the negotiation process — always maintaining neutrality and discretion.",
+    ps5_h:"Due Diligence Support", ps5_p:"We assist with document coordination, regulatory verification and compliance checks — ensuring both parties have the information they need to proceed with confidence.",
+    ps6_h:"Deal Closure", ps6_p:"Once terms are agreed and the contract is signed, our commission is settled. The relationship does not end here — we continue to support both parties throughout execution.",
+    trust_tag:"Our Approach", trust_h2:"We build <em>relationships,</em> not just transactions.",
+    trust_p:"In the energy sector, trust is the foundation of every deal. We invest in long-term relationships on both sides of the bridge — with producers in the Middle East and buyers in Europe. A single strong relationship is worth more than a hundred cold introductions.",
+    tc1:"Direct access to Middle East decision-makers", tc2:"Deep understanding of regional business culture",
+    tc3:"Strong European regulatory and commercial network", tc4:"Full discretion and confidentiality on all mandates",
+    tc5:"Neutral intermediary — we represent the deal, not one side",
+    tr1_h:"For Middle East Producers", tr1_p:"Access to verified European buyers, refineries and distributors — with full regulatory guidance for EU market entry.",
+    tr2_h:"For European Companies", tr2_p:"Direct access to Middle East producers, exporters and investors — without the language and cultural barriers.",
+    tr3_h:"For Investors", tr3_p:"Introduction to qualified energy projects and assets on both sides — with our network doing the qualification work for you.",
+    tr4_h:"Full Confidentiality", tr4_p:"Client identities are never disclosed without explicit written authorization. Every mandate is handled with full professional discretion.",
+    ct_tag:"Get In Touch", ct_h2:"Ready to explore an <em>opportunity?</em>",
+    ct_p:"Whether you are a Middle East energy company looking for European buyers, or a European company seeking Middle East supply — reach out for a confidential, no-obligation first conversation.",
+    ct_wa:"Available 7 days / 7", ct_loc_lbl:"Location",
+    f_name:"Full Name", f_company:"Company", f_country:"Country", f_interest:"I am looking for",
+    f_select:"Select", f_opt1:"Buyers for my product", f_opt2:"Suppliers / producers",
+    f_opt3:"Investment opportunities", f_opt4:"Market entry support", f_opt5:"Other",
+    f_msg:"Message", f_send:"Send Message",
+    f_note:"<b>Confidentiality:</b> All information shared is treated with full discretion. We never disclose client details to third parties without written authorization.",
+    ft_desc:"Oil & Gas Intermediary. Connecting Middle East producers with European markets. Brussels, Belgium — Est. 2026.",
+    ft_services:"Services", ft_s1:"Commercial Intermediation", ft_s2:"Market Entry Advisory",
+    ft_s3:"Investment Facilitation", ft_s4:"Supply Chain Intermediation", ft_s5:"Deal Structuring",
+    ft_markets:"Markets", ft_europe:"Europe (buyers)", ft_contact:"Contact",
+    ft_copy:"© 2026 Nexoil Solutions · Brussels, Belgium · All rights reserved",
+    ft_tagline:"Oil & Gas Intermediation — Middle East & Europe"
+  },
+  fr: {
+    nav_services:"Services", nav_how:"Comment ca marche", nav_markets:"Marches",
+    nav_model:"Notre Modele", nav_contact:"Contact", nav_cta:"Nous Contacter",
+    hero_tag:"Intermediaire Petrole & Gaz — Bruxelles, Belgique — Est. 2026",
+    hero_h1:"Votre pont de confiance entre les producteurs du <em>Moyen-Orient</em> et les marches <em>europeens.</em>",
+    hero_desc:"Nous connectons les producteurs de petrole et gaz du Moyen-Orient avec des acheteurs, partenaires et investisseurs europeens. Nous gerons la relation commerciale complete — du premier contact a l'accord signe.",
+    hero_cta1:"Demarrer un partenariat", hero_cta2:"Comment ca marche",
+    pill1:"Petrole brut", pill2:"Gaz naturel", pill3:"Produits raffines", pill4:"Petrochimiques", pill5:"Intermediation B2B",
+    card_title:"Profil Societe", card_status:"ACTIF", card_hq:"Siege social",
+    card_sector:"Secteur", card_sector_val:"Intermediation Petrole & Gaz",
+    card_coverage:"Couverture", card_products:"Produits", card_products_val:"Brut · Gaz · Raffines",
+    card_langs:"Langues", card_fees:"Modele de frais", card_fees_val:"Commission uniquement",
+    cell1:"Marches", cell2:"Langues", cell3:"Initial",
+    tick1:"Intermediaire Petrole & Gaz", tick2:"Moyen-Orient vers Europe",
+    tick3:"Petrole brut · Gaz naturel · Produits raffines", tick4:"Commission uniquement · Zero frais initiaux",
+    svc_tag:"Ce Que Nous Faisons", svc_h2:"Nos services <em>d'intermediation</em>",
+    svc_sub:"Nous sommes un pur intermediaire — nous ne possedons pas, ne stockons pas et ne transportons pas les produits. Nous possedons la relation et le reseau qui font avancer les affaires.",
+    svc1_h:"Intermediation commerciale", svc1_p:"Nous identifions des acheteurs et vendeurs verifies des deux cotes — producteurs du Moyen-Orient et importateurs, raffineries et distributeurs europeens. Nous gerons tout le processus de negociation et amenons les deux parties a un accord commercial signe.",
+    svc2_h:"Conseil entree marche & reglementaire", svc2_p:"Nous guidons les entreprises du Moyen-Orient dans les exigences reglementaires europeennes — classifications douanieres, procedures d'importation, normes de conformite et strategie d'entree sur le marche. Bases a Bruxelles, nous connaissons les reglementations energetiques de l'UE de l'interieur.",
+    svc3_h:"Facilitation d'investissement", svc3_p:"Nous connectons les investisseurs du Moyen-Orient avec des actifs energetiques europeens, des projets d'infrastructure et des societes technologiques. Nous facilitons les introductions, soutenons la coordination de la due diligence et aidons a structurer les cadres de transaction.",
+    svc4_h:"Intermediation chaine d'approvisionnement", svc4_p:"Nous couvrons toute la chaine d'approvisionnement petroliere — de l'extraction et du stockage en depot, en passant par la coordination du transport et de la logistique, jusqu'a la reception en raffinerie et la distribution finale.",
+    svc5_h:"Construction de reseau & relations", svc5_p:"Dans le secteur energetique, les deals se font entre personnes — pas entre societes. Nous investissons dans des relations a long terme avec les decideurs des deux cotes. Notre equipe trilingue (EN · FR · AR) supprime les barrieres linguistiques.",
+    svc6_h:"Structuration de deals confidentielle", svc6_p:"Tous les mandats sont traites avec une entiere discretion. Nous agissons comme intermediaire neutre — notre role est d'aligner les interets, de faciliter la communication et de creer les conditions d'un deal reussi.",
+    svc_more:"En savoir plus",
+    how_tag:"La Chaine Complete", how_h2:"Du <em>depot</em> a la <em>distribution</em> — nous connectons chaque maillon",
+    how_sub:"Nous comprenons chaque etape de la chaine d'approvisionnement petroliere. Cela nous permet d'intermedier a n'importe quel point — et de parler le langage de chaque partie prenante.",
+    cs1_h:"Extraction & Depot", cs1_p:"Petrole brut extrait des champs du Moyen-Orient, stocke dans des depots primaires en attente de transport.",
+    cs2_h:"Transport", cs2_p:"Transport par pipeline et petrolier depuis les sites de production vers les terminaux de reception europeens.", cs2_badge:"Rotterdam · Anvers · Marseille",
+    cs3_h:"Raffinerie", cs3_p:"Le brut raffine en essence, diesel, carburant d'aviation et petrochimiques dans des installations europeennes.", cs3_badge:"Belgique · Pays-Bas · France",
+    cs4_h:"Distribution", cs4_p:"Les produits raffines atteignent l'industrie, les centrales, les aeroports et les consommateurs finaux en Europe.", cs4_badge:"Marche final europeen",
+    chain_note:"<strong>NEXOIL est l'intermediaire a chaque etape.</strong> Nous ne possedons pas le produit — nous possedons la relation. Nous sommes le pont commercial qui permet aux transactions d'avoir lieu entre des parties qui ne se trouveraient pas autrement.",
+    stat1:"Marches actifs", stat2:"Langues parlees", stat3:"Frais initiaux", stat4:"A la commission",
+    mkt_tag:"Nos Marches", mkt_h2:"Actif dans tout le <em>Moyen-Orient</em>",
+    mkt_sub:"Nous avons un acces commercial direct aux quatre principaux marches energetiques du Moyen-Orient — qui abritent plus de 40% des reserves mondiales prouvees de petrole.",
+    mkt_primary:"Prioritaire", mkt_active:"Actif", mkt_ksa:"Arabie Saoudite",
+    mkt_qat_sub:"QatarEnergy · Leader mondial GNL", mkt_kwt:"Koweit",
+    why_tag:"Pourquoi Choisir NEXOIL",
+    why1_h:"Trilingue — EN · FR · AR", why1_p:"Nous communiquons nativement en anglais, francais et arabe — eliminant les barrieres linguistiques qui empechent les deals. Pas de delais de traduction, pas de malentendus.",
+    why2_h:"Bruxelles — Coeur de l'UE", why2_p:"Situes dans la capitale reglementaire de l'Europe. Nous avons une connaissance directe des reglementations europeennes d'importation d'energie, des procedures douanieres et des exigences de conformite.",
+    why3_h:"Commission uniquement — Zero initial", why3_p:"Nous gagnons uniquement quand vous reussissez. Notre commission est un petit pourcentage de la valeur de la transaction, payee a la cloture du deal.",
+    model_tag:"Notre Modele Commercial", model_h2:"Comment nous gagnons — et pourquoi ca <em>marche pour vous</em>",
+    earn1_h:"Frais initiaux", earn1_p:"Nous ne facturons jamais de retainer ni de frais initiaux. Si nous ne concluons pas un deal, nous ne gagnons pas. Cette structure garantit que nous n'acceptons que des mandats en lesquels nous croyons.",
+    earn2_h:"Taux de commission", earn2_p:"Notre honoraire d'intermediation est generalement de 0,5% a 2% de la valeur de la transaction, convenu a l'avance et divulgue de maniere transparente aux deux parties.",
+    earn3_h:"Interets alignes", earn3_p:"Comme nous sommes payes sur les resultats, nos interets sont completement alignes avec les votres. Nous travaillons plus dur, plus vite et plus intelligemment — car notre succes depend entierement du succes de nos clients.",
+    proc_tag:"Notre Processus", proc_h2:"Comment fonctionne un <em>mandat</em>",
+    proc_sub:"Du premier entretien a l'accord signe — un processus clair et structure avec une transparence totale a chaque etape.",
+    ps1_h:"Consultation initiale", ps1_p:"Nous nous rencontrons — acheteur ou vendeur — pour comprendre vos besoins, volumes, specifications et calendrier. Tout ce qui est discute est strictement confidentiel.",
+    ps2_h:"Accord de mandat", ps2_p:"Nous formalisons notre engagement avec une lettre de mandat claire — definissant la portee, le taux de commission et les termes. Aucune obligation jusqu'a ce que les deux parties soient d'accord.",
+    ps3_h:"Identification de la contrepartie", ps3_p:"Nous activons notre reseau pour identifier et qualifier la bonne contrepartie — un acheteur, vendeur ou investisseur verifie qui correspond precisement a vos exigences.",
+    ps4_h:"Introduction & Negociation", ps4_p:"Nous facilitons l'introduction, gerons la communication entre les parties et soutenons le processus de negociation — en maintenant toujours la neutralite et la discretion.",
+    ps5_h:"Support due diligence", ps5_p:"Nous assistons dans la coordination des documents, la verification reglementaire et les verifications de conformite — garantissant que les deux parties disposent des informations necessaires.",
+    ps6_h:"Cloture du deal", ps6_p:"Une fois les termes agrees et le contrat signe, notre commission est reglée. La relation ne s'arrete pas ici — nous continuons a soutenir les deux parties tout au long de l'execution.",
+    trust_tag:"Notre Approche", trust_h2:"Nous construisons des <em>relations,</em> pas seulement des transactions.",
+    trust_p:"Dans le secteur energetique, la confiance est le fondement de chaque deal. Nous investissons dans des relations a long terme des deux cotes du pont — avec les producteurs au Moyen-Orient et les acheteurs en Europe.",
+    tc1:"Acces direct aux decideurs du Moyen-Orient", tc2:"Comprehension approfondie de la culture des affaires regionale",
+    tc3:"Fort reseau reglementaire et commercial europeen", tc4:"Discretion et confidentialite totales sur tous les mandats",
+    tc5:"Intermediaire neutre — nous representons le deal, pas un seul cote",
+    tr1_h:"Pour les producteurs du Moyen-Orient", tr1_p:"Acces a des acheteurs, raffineries et distributeurs europeens verifies — avec un accompagnement reglementaire complet pour l'entree sur le marche UE.",
+    tr2_h:"Pour les societes europeennes", tr2_p:"Acces direct aux producteurs, exportateurs et investisseurs du Moyen-Orient — sans les barrieres linguistiques et culturelles.",
+    tr3_h:"Pour les investisseurs", tr3_p:"Introduction a des projets et actifs energetiques qualifies des deux cotes — avec notre reseau qui effectue le travail de qualification pour vous.",
+    tr4_h:"Confidentialite totale", tr4_p:"Les identites des clients ne sont jamais divulguees sans autorisation ecrite explicite. Chaque mandat est traite avec une entiere discretion professionnelle.",
+    ct_tag:"Nous Contacter", ct_h2:"Pret a explorer une <em>opportunite?</em>",
+    ct_p:"Que vous soyez une societe energetique du Moyen-Orient cherchant des acheteurs europeens, ou une societe europeenne cherchant un approvisionnement du Moyen-Orient — contactez-nous pour une premiere conversation confidentielle et sans engagement.",
+    ct_wa:"Disponible 7j/7", ct_loc_lbl:"Localisation",
+    f_name:"Nom complet", f_company:"Societe", f_country:"Pays", f_interest:"Je recherche",
+    f_select:"Selectionner", f_opt1:"Des acheteurs pour mon produit", f_opt2:"Des fournisseurs / producteurs",
+    f_opt3:"Des opportunites d'investissement", f_opt4:"Un accompagnement entree marche", f_opt5:"Autre",
+    f_msg:"Message", f_send:"Envoyer le message",
+    f_note:"<b>Confidentialite :</b> Toutes les informations partagees sont traitees avec une entiere discretion. Nous ne divulguons jamais les coordonnees des clients a des tiers sans autorisation ecrite.",
+    ft_desc:"Intermediaire Petrole & Gaz. Connecter les producteurs du Moyen-Orient aux marches europeens. Bruxelles, Belgique — Est. 2026.",
+    ft_services:"Services", ft_s1:"Intermediation commerciale", ft_s2:"Conseil entree marche",
+    ft_s3:"Facilitation d'investissement", ft_s4:"Intermediation chaine", ft_s5:"Structuration de deals",
+    ft_markets:"Marches", ft_europe:"Europe (acheteurs)", ft_contact:"Contact",
+    ft_copy:"© 2026 Nexoil Solutions · Bruxelles, Belgique · Tous droits reserves",
+    ft_tagline:"Intermediation Petrole & Gaz — Moyen-Orient & Europe"
+  },
+  ar: {
+    nav_services:"الخدمات", nav_how:"كيف يعمل", nav_markets:"الأسواق",
+    nav_model:"نموذجنا", nav_contact:"اتصل بنا", nav_cta:"ابدأ الآن",
+    hero_tag:"وسيط نفط وغاز — بروكسل، بلجيكا — تأسس 2026",
+    hero_h1:"جسرك الموثوق بين منتجي <em>الشرق الأوسط</em> والأسواق <em>الأوروبية.</em>",
+    hero_desc:"نربط منتجي النفط والغاز في الشرق الأوسط بالمشترين والشركاء والمستثمرين الأوروبيين. نتولى إدارة العلاقة التجارية الكاملة من أول تواصل حتى توقيع الاتفاقية.",
+    hero_cta1:"ابدأ شراكة", hero_cta2:"كيف يعمل",
+    pill1:"النفط الخام", pill2:"الغاز الطبيعي", pill3:"المنتجات المكررة", pill4:"البتروكيماويات", pill5:"وساطة B2B",
+    card_title:"ملف الشركة", card_status:"نشط", card_hq:"المقر الرئيسي",
+    card_sector:"القطاع", card_sector_val:"وساطة النفط والغاز",
+    card_coverage:"التغطية", card_products:"المنتجات", card_products_val:"خام · غاز · مكرر",
+    card_langs:"اللغات", card_fees:"نموذج الرسوم", card_fees_val:"عمولة فقط",
+    cell1:"أسواق", cell2:"لغات", cell3:"مقدما",
+    tick1:"وسيط نفط وغاز", tick2:"الشرق الأوسط إلى أوروبا",
+    tick3:"نفط خام · غاز طبيعي · منتجات مكررة", tick4:"عمولة فقط · لا رسوم مسبقة",
+    svc_tag:"ما نقدمه", svc_h2:"خدمات <em>الوساطة</em> لدينا",
+    svc_sub:"نحن وسيط خالص — لا نمتلك المنتجات ولا نخزنها ولا ننقلها. نحن نمتلك العلاقة والشبكة التي تحرك الأعمال إلى الأمام.",
+    svc1_h:"الوساطة التجارية", svc1_p:"نحدد المشترين والبائعين الموثقين من كلا الجانبين — منتجو الشرق الأوسط والمستوردون والمصافي والموزعون الأوروبيون. ندير عملية التفاوض الكاملة ونقود الطرفين إلى اتفاق تجاري موقع.",
+    svc2_h:"استشارات دخول السوق والتنظيم", svc2_p:"نرشد شركات الشرق الأوسط عبر المتطلبات التنظيمية الأوروبية — تصنيفات الجمارك وإجراءات الاستيراد ومعايير الامتثال واستراتيجية دخول السوق.",
+    svc3_h:"تيسير الاستثمار", svc3_p:"نربط المستثمرين من الشرق الأوسط بالأصول الطاقوية الأوروبية ومشاريع البنية التحتية والشركات التكنولوجية. نيسر التعريفات وندعم تنسيق التحقق من العناية الواجبة.",
+    svc4_h:"وساطة سلسلة الإمداد", svc4_p:"نغطي سلسلة إمداد البترول الكاملة — من الاستخراج والتخزين في المستودعات، عبر تنسيق النقل والخدمات اللوجستية، إلى استقبال المصفاة والتوزيع النهائي.",
+    svc5_h:"بناء الشبكة والعلاقات", svc5_p:"في قطاع الطاقة، الصفقات تتم بين الأشخاص — لا بين الشركات. نستثمر في علاقات طويلة الأمد مع صناع القرار على كلا الجانبين. فريقنا ثلاثي اللغة (EN · FR · AR) يزيل حواجز اللغة.",
+    svc6_h:"هيكلة الصفقات السرية", svc6_p:"جميع التفويضات تُعالج بسرية تامة. نتصرف كوسيط محايد — دورنا هو مواءمة المصالح وتيسير التواصل وخلق الظروف لصفقة ناجحة.",
+    svc_more:"اعرف المزيد",
+    how_tag:"السلسلة الكاملة", how_h2:"من <em>المستودع</em> إلى <em>التوزيع</em> — نربط كل حلقة",
+    how_sub:"نفهم كل مرحلة في سلسلة إمداد البترول. هذا يتيح لنا الوساطة في أي نقطة — والتحدث بلغة كل أصحاب المصلحة المعنيين.",
+    cs1_h:"الاستخراج والمستودع", cs1_p:"يُستخرج النفط الخام من حقول الشرق الأوسط ويُخزن في مستودعات أولية في انتظار النقل.",
+    cs2_h:"النقل", cs2_p:"نقل عبر خطوط الأنابيب والناقلات من مواقع الإنتاج إلى محطات الاستقبال الأوروبية.", cs2_badge:"روتردام · أنتويرب · مرسيليا",
+    cs3_h:"المصفاة", cs3_p:"تكرير النفط الخام إلى بنزين وديزل ووقود طائرات وبتروكيماويات في المنشآت الأوروبية.", cs3_badge:"بلجيكا · هولندا · فرنسا",
+    cs4_h:"التوزيع", cs4_p:"تصل المنتجات المكررة إلى الصناعة ومحطات الكهرباء والمطارات والمستهلكين النهائيين في أوروبا.", cs4_badge:"السوق الأوروبي النهائي",
+    chain_note:"<strong>NEXOIL يعمل كوسيط في كل مرحلة.</strong> لا نمتلك المنتج — نمتلك العلاقة. نحن الجسر التجاري الذي يتيح إتمام المعاملات بين الأطراف التي لن تجد بعضها البعض بطريقة أخرى.",
+    stat1:"أسواق نشطة", stat2:"لغات مُتحدث بها", stat3:"رسوم مسبقة", stat4:"قائم على العمولة",
+    mkt_tag:"أسواقنا", mkt_h2:"نشط في <em>الشرق الأوسط</em>",
+    mkt_sub:"لدينا وصول تجاري مباشر إلى الأسواق الطاقوية الأربعة الرئيسية في الشرق الأوسط — التي تضم أكثر من 40% من الاحتياطيات النفطية المثبتة في العالم.",
+    mkt_primary:"أساسي", mkt_active:"نشط", mkt_ksa:"المملكة العربية السعودية",
+    mkt_qat_sub:"قطر للطاقة · رائد عالمي في الغاز المسال", mkt_kwt:"الكويت",
+    why_tag:"لماذا تختار NEXOIL",
+    why1_h:"ثلاثي اللغة — EN · FR · AR", why1_p:"نتواصل بشكل أصيل بالإنجليزية والفرنسية والعربية — نزيل الحواجز اللغوية التي تمنع إتمام الصفقات. لا تأخيرات في الترجمة، لا سوء فهم.",
+    why2_h:"بروكسل — قلب الاتحاد الأوروبي", why2_p:"متمركزون في العاصمة التنظيمية لأوروبا. لدينا معرفة مباشرة بأنظمة استيراد الطاقة في الاتحاد الأوروبي وإجراءات الجمارك ومتطلبات الامتثال.",
+    why3_h:"عمولة فقط — صفر مسبقاً", why3_p:"نكسب فقط عندما تنجح. عمولتنا نسبة صغيرة من قيمة المعاملة، تُدفع عند إتمام الصفقة. هذا يعني أننا نقبل فقط التفويضات التي نثق بإمكانية إتمامها.",
+    model_tag:"نموذجنا التجاري", model_h2:"كيف نكسب — ولماذا <em>يناسبك</em>",
+    earn1_h:"رسوم مسبقة", earn1_p:"لا نفرض أبدا رسوم احتجاز أو مدفوعات مسبقة. إذا لم نُغلق صفقة، فنحن لا نكسب. هذا الهيكل يضمن أننا نقبل فقط التفويضات التي نؤمن بها.",
+    earn2_h:"معدل العمولة", earn2_p:"رسوم وساطتنا عادةً من 0.5% إلى 2% من قيمة المعاملة، متفق عليها مسبقاً ومكشوفة بشفافية للطرفين. في صفقة بـ10 ملايين دولار، هذا 50 إلى 200 ألف دولار.",
+    earn3_h:"مصالح متوافقة", earn3_p:"لأننا نُدفع على النتائج، فإن مصالحنا تتوافق تماماً مع مصالحك. نعمل بجهد وسرعة وذكاء أكبر — لأن نجاحنا يعتمد كلياً على نجاح عملائنا.",
+    proc_tag:"عمليتنا", proc_h2:"كيف يعمل <em>التفويض</em>",
+    proc_sub:"من المحادثة الأولى إلى الاتفاقية الموقعة — عملية واضحة ومنظمة بشفافية كاملة في كل خطوة.",
+    ps1_h:"الاستشارة الأولية", ps1_p:"نلتقي معك — مشتري أو بائع — لفهم احتياجاتك ومتطلبات الحجم ومواصفات الجودة والجدول الزمني. كل ما يُناقش يخضع للسرية التامة.",
+    ps2_h:"اتفاقية التفويض", ps2_p:"نضفي الطابع الرسمي على تعاملنا برسالة تفويض واضحة — تحدد النطاق ومعدل العمولة والشروط. لا التزامات حتى يوافق الطرفان.",
+    ps3_h:"تحديد الطرف المقابل", ps3_p:"نُنشط شبكتنا لتحديد وتأهيل الطرف المقابل المناسب — مشتر أو بائع أو مستثمر موثق يتطابق بدقة مع متطلباتك.",
+    ps4_h:"المقدمة والتفاوض", ps4_p:"نيسر المقدمة وندير التواصل بين الأطراف وندعم عملية التفاوض — مع الحفاظ دائماً على الحياد والسرية.",
+    ps5_h:"دعم العناية الواجبة", ps5_p:"نساعد في تنسيق الوثائق والتحقق التنظيمي وفحوصات الامتثال — لضمان حصول كلا الطرفين على المعلومات اللازمة للمضي بثقة.",
+    ps6_h:"إتمام الصفقة", ps6_p:"بمجرد الاتفاق على الشروط وتوقيع العقد، تُسوى عمولتنا. العلاقة لا تنتهي هنا — نواصل دعم كلا الطرفين طوال التنفيذ.",
+    trust_tag:"نهجنا", trust_h2:"نبني <em>علاقات,</em> وليس مجرد معاملات.",
+    trust_p:"في قطاع الطاقة، الثقة هي أساس كل صفقة. نستثمر في علاقات طويلة الأمد على جانبي الجسر — مع المنتجين في الشرق الأوسط والمشترين في أوروبا.",
+    tc1:"وصول مباشر إلى صناع القرار في الشرق الأوسط", tc2:"فهم عميق لثقافة الأعمال الإقليمية",
+    tc3:"شبكة تنظيمية وتجارية أوروبية قوية", tc4:"سرية وكتمان تامان في جميع التفويضات",
+    tc5:"وسيط محايد — نمثل الصفقة وليس طرفاً واحداً",
+    tr1_h:"لمنتجي الشرق الأوسط", tr1_p:"الوصول إلى مشترين ومصافٍ وموزعين أوروبيين موثقين — مع إرشاد تنظيمي كامل لدخول السوق الأوروبية.",
+    tr2_h:"للشركات الأوروبية", tr2_p:"وصول مباشر إلى منتجي ومصدري ومستثمري الشرق الأوسط — دون الحواجز اللغوية والثقافية.",
+    tr3_h:"للمستثمرين", tr3_p:"مقدمة إلى مشاريع وأصول طاقة مؤهلة من كلا الجانبين — مع قيام شبكتنا بعمل التأهيل نيابةً عنك.",
+    tr4_h:"سرية تامة", tr4_p:"لا تُكشف هويات العملاء أبدا دون تفويض كتابي صريح. كل تفويض يُعالج بسرية مهنية كاملة.",
+    ct_tag:"تواصل معنا", ct_h2:"هل أنت مستعد لاستكشاف <em>فرصة؟</em>",
+    ct_p:"سواء كنت شركة طاقة من الشرق الأوسط تبحث عن مشترين أوروبيين، أو شركة أوروبية تسعى للحصول على إمدادات من الشرق الأوسط — تواصل معنا لمحادثة أولى سرية وبدون التزام.",
+    ct_wa:"متاح 7 أيام في الأسبوع", ct_loc_lbl:"الموقع",
+    f_name:"الاسم الكامل", f_company:"الشركة", f_country:"البلد", f_interest:"أبحث عن",
+    f_select:"اختر", f_opt1:"مشترين لمنتجي", f_opt2:"موردون / منتجون",
+    f_opt3:"فرص استثمارية", f_opt4:"دعم دخول السوق", f_opt5:"أخرى",
+    f_msg:"الرسالة", f_send:"إرسال الرسالة",
+    f_note:"<b>السرية:</b> جميع المعلومات المشتركة تُعالج بسرية تامة. لا نكشف أبداً بيانات العملاء لأطراف ثالثة دون تفويض كتابي.",
+    ft_desc:"وسيط نفط وغاز. ربط منتجي الشرق الأوسط بالأسواق الأوروبية. بروكسل، بلجيكا — تأسس 2026.",
+    ft_services:"الخدمات", ft_s1:"الوساطة التجارية", ft_s2:"استشارات دخول السوق",
+    ft_s3:"تيسير الاستثمار", ft_s4:"وساطة سلسلة الإمداد", ft_s5:"هيكلة الصفقات",
+    ft_markets:"الأسواق", ft_europe:"أوروبا (المشترون)", ft_contact:"اتصل بنا",
+    ft_copy:"© 2026 Nexoil Solutions · بروكسل، بلجيكا · جميع الحقوق محفوظة",
+    ft_tagline:"وساطة النفط والغاز — الشرق الأوسط وأوروبا"
+  }
+};
+
+let currentLang = 'en';
+
+function setLang(l) {
+  currentLang = l;
+  const t = T[l];
+  const isAr = l === 'ar';
+  document.documentElement.lang = l;
+  document.documentElement.dir = isAr ? 'rtl' : 'ltr';
+  document.body.style.fontFamily = isAr ? "'Noto Sans Arabic','Manrope',sans-serif" : "'Manrope',sans-serif";
+
+  // Update lang buttons
+  document.querySelectorAll('.lb').forEach(b => {
+    b.classList.toggle('on', b.textContent === l.toUpperCase());
+  });
+
+  // Refresh journey strip text
+  renderSceneInfo(currentScene);
+  // Update all elements with data-t
+  document.querySelectorAll('[data-t]').forEach(el => {
+    const key = el.getAttribute('data-t');
+    if (!t[key]) return;
+    if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+      el.placeholder = t[key];
+    } else if (el.tagName === 'OPTION') {
+      el.textContent = t[key];
+    } else {
+      el.innerHTML = t[key];
+    }
+  });
+}
+
+// ── PROGRESS BAR
+window.addEventListener('scroll', () => {
+  const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;
+  document.getElementById('prog-fill').style.width = Math.min(pct,100) + '%';
+  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 40);
+});
+
+// ── MOBILE MENU
+function toggleMob() { document.getElementById('mob').classList.toggle('open'); }
+
+// ── SCROLL REVEAL
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('v'); obs.unobserve(e.target); } });
+}, { threshold: 0.1, rootMargin:'0px 0px -40px 0px' });
+document.querySelectorAll('.r').forEach(el => obs.observe(el));
+
+
+// ══ JOURNEY STRIP ══
+const sceneData = {
+  en: [
+    { n:'01', h:'Extraction & Depot',   p:'Crude oil extracted from Middle East fields, stored at primary depots awaiting transport.',    badge:'UAE · KSA · QAT · KWT' },
+    { n:'02', h:'Transportation',        p:'Pipeline and tanker transport from production sites to European receiving terminals.',           badge:'Rotterdam · Antwerp · Marseille' },
+    { n:'03', h:'Refinery',             p:'Crude refined into gasoline, diesel, jet fuel and petrochemicals at European facilities.',       badge:'Belgium · Netherlands · France' },
+    { n:'04', h:'Distribution',         p:'Refined products reach industry, power plants, airports and end consumers across Europe.',       badge:'European End Market' },
+  ],
+  fr: [
+    { n:'01', h:'Extraction & Dépôt',   p:'Pétrole brut extrait des champs du Moyen-Orient, stocké dans des dépôts primaires en attente de transport.', badge:'UAE · KSA · QAT · KWT' },
+    { n:'02', h:'Transport',            p:'Transport par pipeline et pétrolier depuis les sites de production vers les terminaux de réception européens.', badge:'Rotterdam · Anvers · Marseille' },
+    { n:'03', h:'Raffinerie',           p:"Le brut raffiné en essence, diesel, carburant d'aviation et pétrochimiques dans des installations européennes.", badge:'Belgique · Pays-Bas · France' },
+    { n:'04', h:'Distribution',         p:"Les produits raffinés atteignent l'industrie, les centrales, les aéroports et les consommateurs finaux en Europe.", badge:'Marché final européen' },
+  ],
+  ar: [
+    { n:'01', h:'الاستخراج والمستودع', p:'يُستخرج النفط الخام من حقول الشرق الأوسط ويُخزن في مستودعات أولية في انتظار النقل.',         badge:'UAE · KSA · QAT · KWT' },
+    { n:'02', h:'النقل',               p:'نقل عبر خطوط الأنابيب والناقلات من مواقع الإنتاج إلى محطات الاستقبال الأوروبية.',             badge:'روتردام · أنتويرب · مرسيليا' },
+    { n:'03', h:'المصفاة',             p:'تكرير النفط الخام إلى بنزين وديزل ووقود طائرات وبتروكيماويات في المنشآت الأوروبية.',         badge:'بلجيكا · هولندا · فرنسا' },
+    { n:'04', h:'التوزيع',             p:'تصل المنتجات المكررة إلى الصناعة ومحطات الكهرباء والمطارات والمستهلكين النهائيين في أوروبا.', badge:'السوق الأوروبي النهائي' },
+  ],
+};
+
+let currentScene = 0;
+let journeyTimer = null;
+
+function renderSceneInfo(idx) {
+  const data = sceneData[currentLang] || sceneData.en;
+  const s = data[idx];
+  document.getElementById('jsInfoN').textContent = s.n;
+  document.getElementById('jsInfoH').textContent = s.h;
+  document.getElementById('jsInfoP').textContent = s.p;
+  document.getElementById('jsInfoBadge').textContent = s.badge;
+  document.querySelectorAll('.js-dot').forEach((d,i) => d.classList.toggle('active', i === idx));
+  document.querySelectorAll('.js-scene').forEach((s,i) => s.classList.toggle('active', i === idx));
+  const track = document.querySelector('.js-track');
+  if (track) track.style.transform = `translateX(-${idx * 100}%)`;
+}
+
+function goScene(idx) {
+  currentScene = idx;
+  renderSceneInfo(idx);
+  resetJourneyTimer();
+}
+function nextScene() { goScene((currentScene + 1) % 4); }
+function prevScene() { goScene((currentScene + 3) % 4); }
+
+function resetJourneyTimer() {
+  clearInterval(journeyTimer);
+  journeyTimer = setInterval(() => { goScene((currentScene + 1) % 4); }, 4500);
+}
+
+// Init when DOM ready
+document.addEventListener('DOMContentLoaded', () => {
+  renderSceneInfo(0);
+  resetJourneyTimer();
+  // Swipe support
+  const track = document.querySelector('.js-track-wrap');
+  if (track) {
+    let startX = 0;
+    track.addEventListener('touchstart', e => { startX = e.touches[0].clientX; });
+    track.addEventListener('touchend', e => {
+      const diff = startX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 40) { diff > 0 ? nextScene() : prevScene(); }
+    });
+  }
+});
+
+// ── SEND FORM
+const FORM_MSGS = {
+  en: {
+    fill:    'Please fill in all required fields.',
+    email:   'Please enter a valid email address.',
+    select:  'Please select your country and inquiry type.',
+    success: 'Message sent! We will be in touch shortly.',
+    error:   'Something went wrong. Your mail client will open as a fallback.'
+  },
+  fr: {
+    fill:    'Veuillez remplir tous les champs obligatoires.',
+    email:   'Veuillez saisir une adresse e-mail valide.',
+    select:  'Veuillez sélectionner votre pays et le type de demande.',
+    success: 'Message envoyé ! Nous vous contacterons bientôt.',
+    error:   'Une erreur est survenue. Votre client mail va s\'ouvrir.'
+  },
+  ar: {
+    fill:    'يرجى ملء جميع الحقول المطلوبة.',
+    email:   'يرجى إدخال عنوان بريد إلكتروني صحيح.',
+    select:  'يرجى اختيار بلدك ونوع الاستفسار.',
+    success: 'تم إرسال الرسالة! سنتواصل معك قريباً.',
+    error:   'حدث خطأ ما. سيتم فتح برنامج البريد الإلكتروني.'
+  }
+};
+
+function showToast(msg, type) {
+  const toast = document.getElementById('toast');
+  const ico   = document.getElementById('toastIco');
+  const lbl   = document.getElementById('toastMsg');
+  ico.innerHTML = type === 'success'
+    ? '<svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="8" stroke="#4ADE80" stroke-width="1.5"/><path d="M5.5 9L7.5 11L12.5 6.5" stroke="#4ADE80" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+    : '<svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="8" stroke="#f87171" stroke-width="1.5"/><path d="M9 5.5V10M9 12.5V13" stroke="#f87171" stroke-width="1.5" stroke-linecap="round"/></svg>';
+  lbl.textContent = msg;
+  toast.className = 'toast ' + type;
+  toast.classList.add('show');
+  clearTimeout(toast._t);
+  toast._t = setTimeout(() => toast.classList.remove('show'), 5500);
+}
+
+function sendMsg() {
+  const m       = FORM_MSGS[currentLang] || FORM_MSGS.en;
+  const name    = (document.getElementById('fName').value || '').trim();
+  const company = (document.getElementById('fCompany').value || '').trim();
+  const email   = (document.getElementById('fEmail').value || '').trim();
+  const country = document.getElementById('fCountry');
+  const interest= document.getElementById('fInterest');
+  const message = (document.getElementById('fMsg').value || '').trim();
+
+  // Validation
+  if (!name || !company || !message) { showToast(m.fill, 'error'); return; }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showToast(m.email, 'error'); return; }
+  if (!country.value || !interest.value) { showToast(m.select, 'error'); return; }
+
+  // Loading state
+  const btn = document.getElementById('sendBtn');
+  const origText = btn.textContent;
+  btn.disabled = true;
+  btn.style.opacity = '.6';
+  btn.textContent = '...';
+
+  // Try Formspree — replace YOUR_FORM_ID with a real Formspree endpoint
+  fetch('https://formspree.io/f/YOUR_FORM_ID', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+    body: JSON.stringify({
+      name, company, email,
+      country: country.options[country.selectedIndex].text,
+      interest: interest.options[interest.selectedIndex].text,
+      message,
+      _subject: 'NEXOIL Inquiry — ' + name + ' · ' + company
+    })
+  })
+  .then(r => {
+    if (r.ok) {
+      showToast(m.success, 'success');
+      document.getElementById('fName').value    = '';
+      document.getElementById('fCompany').value = '';
+      document.getElementById('fEmail').value   = '';
+      document.getElementById('fMsg').value     = '';
+      country.selectedIndex  = 0;
+      interest.selectedIndex = 0;
+    } else {
+      throw new Error('non-ok');
+    }
+  })
+  .catch(() => {
+    // Mailto fallback
+    const sub  = encodeURIComponent('NEXOIL Inquiry — ' + name + ' · ' + company);
+    const body = encodeURIComponent(
+      'Name: '     + name    + '\n' +
+      'Company: '  + company + '\n' +
+      'Email: '    + email   + '\n' +
+      'Country: '  + (country.options[country.selectedIndex].text)   + '\n' +
+      'Interest: ' + (interest.options[interest.selectedIndex].text) + '\n\n' +
+      'Message:\n' + message
+    );
+    window.location.href = 'mailto:contact@nexoil.be?subject=' + sub + '&body=' + body;
+    showToast(m.error, 'error');
+  })
+  .finally(() => {
+    btn.disabled   = false;
+    btn.style.opacity = '';
+    btn.textContent = origText;
+  });
+}
+</script>
+</body>
+</html>

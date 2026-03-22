@@ -1,0 +1,13 @@
+{
+  "name": "petrolink-nexoil",
+  "version": "1.0.0",
+  "private": true,
+  "description": "NEXOIL — landing site (static)",
+  "scripts": {
+    "start": "serve .",
+    "dev": "serve ."
+  },
+  "devDependencies": {
+    "serve": "^14.2.4"
+  }
+}
