@@ -1,39 +1,33 @@
-# Déploiement Netlify — Petrolisation
+# Déploiement Netlify — Petrolisation OMS
 
-Deux sites Netlify distincts (recommandé, gratuit) :
+## Site unique (actuel) : petrolisation.netlify.app = OMS
 
-## 1. Vitrine (déjà en place)
-
-- Site actuel : https://petrolisation.netlify.app
-- Racine du repo (HTML statique)
-- Ne rien changer ici
-
-## 2. OMS (nouveau site à créer)
-
-1. Netlify → **Add new project** → **Import an existing project**
-2. Choisir le repo GitHub `oiseaubleuc/PetrolMe`
-3. Réglages obligatoires :
+Le fichier `netlify.toml` à la **racine** force Netlify à builder le dossier
+`petrolisation-oms/` (Next.js), pas le HTML vitrine.
 
 | Setting | Valeur |
 |---------|--------|
-| **Base directory** | `petrolisation-oms` |
-| **Build command** | `npm run build` |
-| **Publish directory** | `.next` |
-| **Node version** | `20` (déjà dans `netlify.toml`) |
+| Base directory | `petrolisation-oms` |
+| Build command | `npm run build` |
+| Publish directory | `.next` |
+| Node | `20` |
 
-4. Site name suggéré : `petrolisation-oms`  
-   → URL : https://petrolisation-oms.netlify.app
+Après chaque push sur `main`, Netlify redéploie **l’OMS**.
 
-5. **Deploy site**
+## Vitrine
 
-Le fichier `petrolisation-oms/netlify.toml` configure le build automatiquement.
+Le HTML (`nexoil-final-2.html`) reste dans le repo pour archive / dev local,
+mais **n’est plus publié** sur Netlify.
 
-## Lier vitrine ↔ OMS
+Pour republier la vitrine plus tard : crée un 2ᵉ site Netlify sans base directory
+(ou base = `.`).
 
-Sur la vitrine, le bouton **Access Platform** pointe vers l’OMS.
-Si tu changes le nom du site Netlify, mets à jour l’URL dans `nexoil-final-2.html`
-(chercher `petrolisation-oms.netlify.app`).
+## Vérifier dans le dashboard
 
-## Push GitHub avant le premier deploy
+Site **petrolisation** → Project configuration → Build & deploy → Build settings :
 
-L’OMS doit être commitée et pushée sur `main`, sinon Netlify ne voit pas les fichiers.
+- Base directory = `petrolisation-oms`
+- Build command = `npm run build`
+- Publish directory = `.next`
+
+Si les champs UI contredisent le `netlify.toml`, aligne-les puis **Clear cache and deploy site**.

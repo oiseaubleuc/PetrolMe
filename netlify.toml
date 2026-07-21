@@ -1,0 +1,11 @@
+# Force the existing Netlify site "petrolisation" to build the OMS,
+# not the static marketing HTML at the repo root.
+
+[build]
+  base = "petrolisation-oms"
+  command = "npm run build"
+  publish = ".next"
+
+[build.environment]
+  NODE_VERSION = "20"
+  NEXT_TELEMETRY_DISABLED = "1"
