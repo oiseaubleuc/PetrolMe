@@ -1,0 +1,97 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-sans: "Manrope", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+@layer base {
+  * {
+    border-color: theme("colors.line.DEFAULT");
+  }
+  html {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  body {
+    @apply bg-ink-950 text-slate-200 font-sans antialiased;
+    background-image:
+      radial-gradient(90% 60% at 100% 0%, rgba(22, 103, 131, 0.12) 0%, rgba(7, 10, 15, 0) 60%),
+      radial-gradient(70% 50% at 0% 100%, rgba(249, 100, 18, 0.06) 0%, rgba(7, 10, 15, 0) 55%);
+    background-attachment: fixed;
+  }
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(148, 169, 201, 0.16);
+    border-radius: 999px;
+    border: 3px solid transparent;
+    background-clip: padding-box;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(148, 169, 201, 0.3);
+    background-clip: padding-box;
+    border: 3px solid transparent;
+  }
+}
+
+@layer components {
+  .panel {
+    @apply rounded-2xl border border-line bg-ink-900/70 shadow-panel backdrop-blur-sm;
+  }
+  .panel-tight {
+    @apply rounded-xl border border-line bg-ink-850/60;
+  }
+  .glass {
+    background: linear-gradient(180deg, rgba(19, 26, 40, 0.75), rgba(11, 15, 23, 0.75));
+    @apply border border-line backdrop-blur-md;
+  }
+  .hairline {
+    @apply border-line;
+  }
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full border border-line px-2.5 py-1 text-[11px] font-medium tracking-wide;
+  }
+  .nav-item {
+    @apply relative flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-slate-400 transition-colors duration-150 hover:text-slate-100 hover:bg-white/[0.03];
+  }
+  .nav-item-active {
+    @apply text-white bg-white/[0.05];
+  }
+  .stat-value {
+    @apply font-semibold tracking-tight text-white tabular-nums;
+  }
+  .label-muted {
+    @apply text-[11px] uppercase tracking-[0.14em] text-slate-500 font-medium;
+  }
+  .focus-ring {
+    @apply outline-none focus-visible:ring-2 focus-visible:ring-petro-400/60 focus-visible:ring-offset-0;
+  }
+}
+
+@layer utilities {
+  .text-gradient-flare {
+    background: linear-gradient(92deg, #ff934d 0%, #f96412 60%, #e04e00 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .grid-bg {
+    background-size: 40px 40px;
+    @apply bg-grid-faint;
+  }
+}

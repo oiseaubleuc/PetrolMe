@@ -447,6 +447,7 @@ footer{background:var(--dark2);padding:4rem 5% 2rem;border-top:1px solid #2a2a2a
       <a href="#markets" class="nav-link" data-t="nav_markets">Markets</a>
       <a href="#model" class="nav-link" data-t="nav_model">Our Model</a>
       <a href="#contact" class="nav-link" data-t="nav_contact">Contact</a>
+      <a href="https://petrolisation-oms.netlify.app" class="nav-link" data-t="nav_oms" target="_blank" rel="noopener">OMS</a>
     </div>
     <div class="nav-right">
       <div class="lang-sw">
@@ -454,7 +455,7 @@ footer{background:var(--dark2);padding:4rem 5% 2rem;border-top:1px solid #2a2a2a
         <button class="lb" onclick="setLang('fr')">FR</button>
         <button class="lb" onclick="setLang('ar')">AR</button>
       </div>
-      <a href="#contact" class="nav-cta" data-t="nav_cta">Get In Touch</a>
+      <a href="https://petrolisation-oms.netlify.app" class="nav-cta" data-t="nav_oms_cta" target="_blank" rel="noopener">Access Platform</a>
       <button class="burger" onclick="toggleMob()" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>
   </div>
@@ -467,13 +468,14 @@ footer{background:var(--dark2);padding:4rem 5% 2rem;border-top:1px solid #2a2a2a
   <a href="#markets" class="mob-link" onclick="toggleMob()" data-t="nav_markets">Markets</a>
   <a href="#model" class="mob-link" onclick="toggleMob()" data-t="nav_model">Our Model</a>
   <a href="#contact" class="mob-link" onclick="toggleMob()" data-t="nav_contact">Contact</a>
+  <a href="https://petrolisation-oms.netlify.app" class="mob-link" onclick="toggleMob()" data-t="nav_oms" target="_blank" rel="noopener">OMS</a>
   <div class="mob-foot">
     <div class="lang-sw" style="align-self:flex-start">
       <button class="lb on" onclick="setLang('en')">EN</button>
       <button class="lb" onclick="setLang('fr')">FR</button>
       <button class="lb" onclick="setLang('ar')">AR</button>
     </div>
-    <a href="#contact" class="btn-main" onclick="toggleMob()" data-t="nav_cta">Get In Touch</a>
+    <a href="https://petrolisation-oms.netlify.app" class="btn-main" onclick="toggleMob()" data-t="nav_oms_cta" target="_blank" rel="noopener">Access Platform</a>
   </div>
 </div>
 
@@ -490,7 +492,7 @@ footer{background:var(--dark2);padding:4rem 5% 2rem;border-top:1px solid #2a2a2a
       <p class="hero-desc" data-t="hero_desc">We connect Middle East oil & gas producers with European buyers, partners and investors. We handle the full commercial relationship — from first contact to signed agreement.</p>
       <div class="hero-btns">
         <a href="#contact" class="btn-main" data-t="hero_cta1">Start a Partnership</a>
-        <a href="#how" class="btn-outline" data-t="hero_cta2">How It Works</a>
+        <a href="https://petrolisation-oms.netlify.app" class="btn-outline" data-t="hero_cta_oms" target="_blank" rel="noopener">Access OMS Platform</a>
       </div>
       <div class="hero-pills">
         <span class="pill" data-t="pill1">Crude Oil</span>
@@ -939,10 +941,11 @@ const T = {
   en: {
     nav_services:"Services", nav_how:"How It Works", nav_markets:"Markets",
     nav_model:"Our Model", nav_contact:"Contact", nav_cta:"Get In Touch",
+    nav_oms:"OMS", nav_oms_cta:"Access Platform",
     hero_tag:"Oil & Gas Intermediary — Brussels, Belgium — Est. 2026",
     hero_h1:"Your trusted <em>bridge</em> between Middle East producers and <em>European</em> markets.",
     hero_desc:"We connect Middle East oil & gas producers with European buyers, partners and investors. We handle the full commercial relationship — from first contact to signed agreement.",
-    hero_cta1:"Start a Partnership", hero_cta2:"How It Works",
+    hero_cta1:"Start a Partnership", hero_cta2:"How It Works", hero_cta_oms:"Access OMS Platform",
     pill1:"Crude Oil", pill2:"Natural Gas", pill3:"Refined Products", pill4:"Petrochemicals", pill5:"B2B Intermediation",
     card_title:"Company Profile", card_status:"ACTIVE", card_hq:"Headquarters",
     card_sector:"Sector", card_sector_val:"Oil & Gas Intermediation",
@@ -1015,10 +1018,11 @@ const T = {
   fr: {
     nav_services:"Services", nav_how:"Comment ca marche", nav_markets:"Marches",
     nav_model:"Notre Modele", nav_contact:"Contact", nav_cta:"Nous Contacter",
+    nav_oms:"OMS", nav_oms_cta:"Acceder a la plateforme",
     hero_tag:"Intermediaire Petrole & Gaz — Bruxelles, Belgique — Est. 2026",
     hero_h1:"Votre pont de confiance entre les producteurs du <em>Moyen-Orient</em> et les marches <em>europeens.</em>",
     hero_desc:"Nous connectons les producteurs de petrole et gaz du Moyen-Orient avec des acheteurs, partenaires et investisseurs europeens. Nous gerons la relation commerciale complete — du premier contact a l'accord signe.",
-    hero_cta1:"Demarrer un partenariat", hero_cta2:"Comment ca marche",
+    hero_cta1:"Demarrer un partenariat", hero_cta2:"Comment ca marche", hero_cta_oms:"Acceder a Petrolisation OMS",
     pill1:"Petrole brut", pill2:"Gaz naturel", pill3:"Produits raffines", pill4:"Petrochimiques", pill5:"Intermediation B2B",
     card_title:"Profil Societe", card_status:"ACTIF", card_hq:"Siege social",
     card_sector:"Secteur", card_sector_val:"Intermediation Petrole & Gaz",
@@ -1091,10 +1095,11 @@ const T = {
   ar: {
     nav_services:"الخدمات", nav_how:"كيف يعمل", nav_markets:"الأسواق",
     nav_model:"نموذجنا", nav_contact:"اتصل بنا", nav_cta:"ابدأ الآن",
+    nav_oms:"OMS", nav_oms_cta:"الدخول إلى المنصة",
     hero_tag:"وسيط نفط وغاز — بروكسل، بلجيكا — تأسس 2026",
     hero_h1:"جسرك الموثوق بين منتجي <em>الشرق الأوسط</em> والأسواق <em>الأوروبية.</em>",
     hero_desc:"نربط منتجي النفط والغاز في الشرق الأوسط بالمشترين والشركاء والمستثمرين الأوروبيين. نتولى إدارة العلاقة التجارية الكاملة من أول تواصل حتى توقيع الاتفاقية.",
-    hero_cta1:"ابدأ شراكة", hero_cta2:"كيف يعمل",
+    hero_cta1:"ابدأ شراكة", hero_cta2:"كيف يعمل", hero_cta_oms:"الدخول إلى Petrolisation OMS",
     pill1:"النفط الخام", pill2:"الغاز الطبيعي", pill3:"المنتجات المكررة", pill4:"البتروكيماويات", pill5:"وساطة B2B",
     card_title:"ملف الشركة", card_status:"نشط", card_hq:"المقر الرئيسي",
     card_sector:"القطاع", card_sector_val:"وساطة النفط والغاز",

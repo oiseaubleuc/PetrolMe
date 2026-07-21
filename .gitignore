@@ -1,2 +1,18 @@
+# Gitignore — PetroLink monorepo (vitrine + OMS)
+
 .claude/
+.DS_Store
+*.log
+
+# Root static site deps
 node_modules/
+
+# Petrolisation OMS
+petrolisation-oms/node_modules/
+petrolisation-oms/.next/
+petrolisation-oms/out/
+petrolisation-oms/.netlify/
+petrolisation-oms/coverage/
+petrolisation-oms/.env
+petrolisation-oms/.env*.local
+petrolisation-oms/next-env.d.ts

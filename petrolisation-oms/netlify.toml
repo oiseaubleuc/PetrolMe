@@ -1,0 +1,32 @@
+# Petrolisation OMS — Netlify configuration
+# Site settings: Base directory = petrolisation-oms
+# (when this file lives inside that folder, base is automatic)
+
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[build.environment]
+  NODE_VERSION = "20"
+  NEXT_TELEMETRY_DISABLED = "1"
+
+# Netlify auto-detects Next.js and applies the OpenNext adapter.
+# Do not pin @netlify/plugin-nextjs unless you need a specific version.
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+# Preview / production context defaults
+[context.production]
+  command = "npm run build"
+
+[context.deploy-preview]
+  command = "npm run build"
+
+[context.branch-deploy]
+  command = "npm run build"
