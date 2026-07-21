@@ -1,33 +1,27 @@
-# Déploiement Netlify — Petrolisation OMS
+# Netlify — Petrolisation OMS
 
-## Site unique (actuel) : petrolisation.netlify.app = OMS
+## Site : https://petroloms.netlify.app
 
-Le fichier `netlify.toml` à la **racine** force Netlify à builder le dossier
-`petrolisation-oms/` (Next.js), pas le HTML vitrine.
+L’app est exportée en **statique** (`out/`).
 
-| Setting | Valeur |
-|---------|--------|
-| Base directory | `petrolisation-oms` |
-| Build command | `npm run build` |
-| Publish directory | `.next` |
-| Node | `20` |
+### Réglages dashboard (obligatoires)
 
-Après chaque push sur `main`, Netlify redéploie **l’OMS**.
+Site **petroloms** → Project configuration → Build settings :
 
-## Vitrine
+| Champ | Valeur |
+|--------|--------|
+| **Base directory** | `petrolisation-oms` |
+| **Build command** | `npm run build` |
+| **Publish directory** | `out` |
 
-Le HTML (`nexoil-final-2.html`) reste dans le repo pour archive / dev local,
-mais **n’est plus publié** sur Netlify.
+⚠️ Si Base directory est déjà `petrolisation-oms` dans l’UI,  
+le `base` du `netlify.toml` racine peut doubler le chemin.  
+Dans ce cas : laisse **Base directory = `petrolisation-oms`** dans l’UI  
+et mets le `netlify.toml` racine **sans** `base` (ou laisse l’UI primer).
 
-Pour republier la vitrine plus tard : crée un 2ᵉ site Netlify sans base directory
-(ou base = `.`).
+Puis : **Deploys → Trigger deploy → Clear cache and deploy site**.
 
-## Vérifier dans le dashboard
+### Ne pas utiliser
 
-Site **petrolisation** → Project configuration → Build & deploy → Build settings :
-
-- Base directory = `petrolisation-oms`
-- Build command = `npm run build`
-- Publish directory = `.next`
-
-Si les champs UI contredisent le `netlify.toml`, aligne-les puis **Clear cache and deploy site**.
+- Publish = `.next` → cause souvent la page **Page not found** de Netlify
+- Base directory vide → déploie la vitrine HTML

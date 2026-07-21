@@ -1,10 +1,10 @@
-# Force the existing Netlify site "petrolisation" to build the OMS,
-# not the static marketing HTML at the repo root.
+# Deploy OMS on Netlify site (e.g. petroloms.netlify.app)
+# Base directory points at the Next.js app, not the marketing HTML.
 
 [build]
   base = "petrolisation-oms"
   command = "npm run build"
-  publish = ".next"
+  publish = "out"
 
 [build.environment]
   NODE_VERSION = "20"
