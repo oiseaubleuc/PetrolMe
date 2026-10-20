@@ -8,8 +8,10 @@ import {
   Gauge,
   LayoutDashboard,
   Map,
+  Newspaper,
   Package,
   ShieldAlert,
+  TrendingUp,
   Truck,
   Users,
   Wrench,
@@ -121,6 +123,23 @@ export const navigation: NavGroup[] = [
     ],
   },
   {
+    title: "Market & Investment",
+    items: [
+      {
+        href: "/news",
+        label: "Market News",
+        icon: Newspaper,
+        description: "Real-time oil & gas market updates",
+      },
+      {
+        href: "/investment",
+        label: "Investment Platform",
+        icon: TrendingUp,
+        description: "Portfolio management and trading tools",
+      },
+    ],
+  },
+  {
     title: "Administration",
     items: [
       {
@@ -147,4 +166,6 @@ export const breadcrumbs: Record<string, { label: string; parent?: string }> = {
   "/reports": { label: "Reports", parent: "/" },
   "/documents": { label: "Document Center", parent: "/" },
   "/users": { label: "User Management", parent: "/" },
+  "/news": { label: "Market News", parent: "/" },
+  "/investment": { label: "Investment Platform", parent: "/" },
 };
