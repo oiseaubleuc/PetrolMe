@@ -1,49 +1,28 @@
 import { cn } from "@/lib/utils";
 
-/**
- * Petrolisation OMS mark — an original abstract "drop + flow" glyph
- * rendered in petroleum blue with an orange flare core.
- */
 export function LogoMark({ className }: { className?: string }) {
   return (
     <svg
-      viewBox="0 0 40 40"
+      viewBox="0 0 24 24"
       className={cn("h-8 w-8", className)}
       fill="none"
       aria-hidden="true"
     >
-      <defs>
-        <linearGradient id="pl-ring" x1="0" y1="0" x2="40" y2="40">
-          <stop offset="0%" stopColor="#4f9fb8" />
-          <stop offset="100%" stopColor="#0c3e50" />
-        </linearGradient>
-        <linearGradient id="pl-core" x1="0" y1="0" x2="0" y2="40">
-          <stop offset="0%" stopColor="#ff934d" />
-          <stop offset="100%" stopColor="#e04e00" />
-        </linearGradient>
-      </defs>
-      <rect
-        x="1.25"
-        y="1.25"
-        width="37.5"
-        height="37.5"
-        rx="11"
-        stroke="url(#pl-ring)"
+      <path
+        d="M12 2.5C8 8 6 11.2 6 14a6 6 0 0 0 12 0c0-2.8-2-6-6-11.5z"
+        fill="#3DDC97"
+        fillOpacity="0.25"
+        stroke="#3DDC97"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M9.5 15a2.5 2.5 0 0 0 2.5 2.5"
+        stroke="#3DDC97"
         strokeWidth="1.5"
-        className="opacity-70"
+        strokeLinecap="round"
       />
-      <path
-        d="M20 8c4.2 5 7 8.6 7 12.4A7 7 0 0 1 13 20.4C13 16.6 15.8 13 20 8Z"
-        fill="url(#pl-core)"
-      />
-      <path
-        d="M20 8c4.2 5 7 8.6 7 12.4A7 7 0 0 1 13 20.4"
-        stroke="#ffd0ad"
-        strokeWidth="0.75"
-        className="opacity-50"
-      />
-      <circle cx="20" cy="30.5" r="1.6" fill="#4f9fb8" />
-      <path d="M20 24.5v4.4" stroke="#4f9fb8" strokeWidth="1.5" strokeLinecap="round" />
     </svg>
   );
 }
@@ -60,17 +39,8 @@ export function Logo({
       <LogoMark />
       {!collapsed && (
         <div className="leading-none">
-          <div className="flex items-baseline gap-1">
-            <span className="text-[15px] font-semibold tracking-tight text-white">
-              Petrol
-            </span>
-            <span className="text-[15px] font-semibold tracking-tight text-gradient-flare">
-              Me
-            </span>
-          </div>
-          <div className="mt-1 text-[9.5px] font-medium uppercase tracking-[0.2em] text-slate-500">
-            Oil · Markets · Invest
-          </div>
+          <div className="text-[17px] font-bold tracking-tight text-desk-text">Oilconnect</div>
+          <div className="mt-1 font-mono text-[10px] text-connect-400">LIVE · DESK 01</div>
         </div>
       )}
     </div>

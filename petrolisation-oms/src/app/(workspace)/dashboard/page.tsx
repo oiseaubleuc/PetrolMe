@@ -26,7 +26,7 @@ import { facilities, totalPersonnel, totalProduction, totalWells } from "@/lib/d
 import { formatCompact, timeAgo } from "@/lib/utils";
 
 export const metadata = {
-  title: "Executive Dashboard",
+  title: "Trading overview",
 };
 
 export default function DashboardPage() {

@@ -14,8 +14,8 @@ export function AppShell({ children }: { children: React.ReactNode }) {
             {children}
           </div>
         </main>
-        <footer className="border-t border-line px-6 py-3 text-center text-[10px] tracking-wide text-slate-600">
-          PetrolMe · Plateforme pétrole & énergie · Données de démonstration · © {new Date().getFullYear()}
+        <footer className="border-t border-line px-6 py-3 text-center text-[10px] tracking-wide text-desk-muted">
+          Oilconnect · Global oil desk · Demo data · © {new Date().getFullYear()}
         </footer>
       </div>
     </div>

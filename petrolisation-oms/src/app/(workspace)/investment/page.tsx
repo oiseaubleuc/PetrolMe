@@ -38,7 +38,7 @@ import {
 import { formatCompact } from "@/lib/utils";
 
 export const metadata = {
-  title: "Investment Platform",
+  title: "Portfolio",
 };
 
 const riskColors: Record<string, string> = {

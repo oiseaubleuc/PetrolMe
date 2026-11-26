@@ -28,7 +28,7 @@ import {
 import { formatCompact, timeAgo } from "@/lib/utils";
 
 export const metadata = {
-  title: "Market News",
+  title: "Oil markets",
 };
 
 const categoryIcons: Record<NewsArticle["category"], any> = {

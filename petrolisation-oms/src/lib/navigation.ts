@@ -2,172 +2,35 @@
 
 import type { LucideIcon } from "lucide-react";
 import {
-  BarChart3,
-  Bot,
-  Boxes,
-  FileStack,
-  FileText,
-  Gauge,
+  ArrowLeftRight,
+  Briefcase,
   LayoutDashboard,
-  Map,
-  Newspaper,
   Package,
-  ShieldAlert,
   TrendingUp,
   Truck,
   Users,
-  Wrench,
 } from "lucide-react";
+import { oilconnectNavMeta, type OilconnectNavMeta } from "@/lib/oilconnect-nav-meta";
 
-export interface NavItem {
-  href: string;
-  label: string;
+export interface NavItem extends OilconnectNavMeta {
   icon: LucideIcon;
-  description: string;
 }
 
-export interface NavGroup {
-  title: string;
-  items: NavItem[];
-}
-
-export const navigation: NavGroup[] = [
-  {
-    title: "Command",
-    items: [
-      {
-        href: "/dashboard",
-        label: "Executive Dashboard",
-        icon: LayoutDashboard,
-        description: "Enterprise KPIs and situational awareness",
-      },
-      {
-        href: "/operations",
-        label: "Operations",
-        icon: Gauge,
-        description: "Live production and shift control",
-      },
-      {
-        href: "/maps",
-        label: "Facilities Map",
-        icon: Map,
-        description: "Interactive field and asset geography",
-      },
-    ],
-  },
-  {
-    title: "Assets & Reliability",
-    items: [
-      {
-        href: "/assets",
-        label: "Asset Management",
-        icon: Boxes,
-        description: "Wells, pipelines, equipment lifecycle",
-      },
-      {
-        href: "/maintenance",
-        label: "Maintenance",
-        icon: Wrench,
-        description: "Work orders and predictive insights",
-      },
-    ],
-  },
-  {
-    title: "Safety & Supply",
-    items: [
-      {
-        href: "/hse",
-        label: "HSE",
-        icon: ShieldAlert,
-        description: "Incidents, permits and compliance",
-      },
-      {
-        href: "/inventory",
-        label: "Inventory",
-        icon: Package,
-        description: "Warehouses, chemicals and spare parts",
-      },
-      {
-        href: "/logistics",
-        label: "Logistics",
-        icon: Truck,
-        description: "Fleet, deliveries and GPS tracking",
-      },
-    ],
-  },
-  {
-    title: "Intelligence",
-    items: [
-      {
-        href: "/analytics",
-        label: "Analytics",
-        icon: BarChart3,
-        description: "Interactive operational intelligence",
-      },
-      {
-        href: "/ai",
-        label: "AI Assistant",
-        icon: Bot,
-        description: "Forecasting and natural-language ops",
-      },
-      {
-        href: "/reports",
-        label: "Reports",
-        icon: FileText,
-        description: "Scheduled executive and ops reports",
-      },
-      {
-        href: "/documents",
-        label: "Document Center",
-        icon: FileStack,
-        description: "Manuals, certificates and drawings",
-      },
-    ],
-  },
-  {
-    title: "Market & Investment",
-    items: [
-      {
-        href: "/news",
-        label: "Market News",
-        icon: Newspaper,
-        description: "Real-time oil & gas market updates",
-      },
-      {
-        href: "/investment",
-        label: "Investment Platform",
-        icon: TrendingUp,
-        description: "Portfolio management and trading tools",
-      },
-    ],
-  },
-  {
-    title: "Administration",
-    items: [
-      {
-        href: "/users",
-        label: "User Management",
-        icon: Users,
-        description: "Organizations, roles and audit",
-      },
-    ],
-  },
-];
-
-export const breadcrumbs: Record<string, { label: string; parent?: string }> = {
-  "/dashboard": { label: "Executive Dashboard" },
-  "/operations": { label: "Operations", parent: "/dashboard" },
-  "/maps": { label: "Facilities Map", parent: "/dashboard" },
-  "/assets": { label: "Asset Management", parent: "/dashboard" },
-  "/maintenance": { label: "Maintenance", parent: "/dashboard" },
-  "/hse": { label: "HSE", parent: "/dashboard" },
-  "/inventory": { label: "Inventory", parent: "/dashboard" },
-  "/logistics": { label: "Logistics", parent: "/dashboard" },
-  "/analytics": { label: "Analytics", parent: "/dashboard" },
-  "/ai": { label: "AI Assistant", parent: "/dashboard" },
-  "/reports": { label: "Reports", parent: "/dashboard" },
-  "/documents": { label: "Document Center", parent: "/dashboard" },
-  "/users": { label: "User Management", parent: "/dashboard" },
-  "/news": { label: "Market News", parent: "/dashboard" },
-  "/investment": { label: "Investment Platform", parent: "/dashboard" },
+const iconById: Record<string, LucideIcon> = {
+  overview: LayoutDashboard,
+  trade: ArrowLeftRight,
+  markets: TrendingUp,
+  portfolio: Briefcase,
+  shipments: Truck,
+  inventory: Package,
+  counterparties: Users,
 };
+
+export const oilconnectNav: NavItem[] = oilconnectNavMeta.map((item) => ({
+  ...item,
+  icon: iconById[item.id],
+}));
+
+export const navigation = [{ title: "Desk", items: oilconnectNav }];
+
+export { breadcrumbs } from "@/lib/oilconnect-nav-meta";
