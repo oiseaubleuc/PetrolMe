@@ -25,3 +25,12 @@ Puis : **Deploys → Trigger deploy → Clear cache and deploy site**.
 
 - Publish = `.next` → cause souvent la page **Page not found** de Netlify
 - Base directory vide → déploie la vitrine HTML
+
+### Erreur « originalFactory.call » (Safari / `npm run dev`)
+
+Cette erreur vient du **mode développement** (React Refresh), pas du build statique.
+
+1. Arrêtez tous les serveurs `next dev` (un seul processus sur le port 3000).
+2. Dans `petrolisation-oms` : `npm run dev:clean` (supprime `.next` puis relance).
+3. Essayez **Chrome ou Firefox** si Safari affiche encore l’erreur.
+4. Pour une prévisualisation fiable : `npm run build` puis `npx serve out -l 3000` (même rendu que Netlify).
