@@ -1,41 +1,43 @@
-# Déployer PetrolMe sur votre nom de domaine
+# Déployer Oilconnect sur Netlify + domaine custom
 
-## Structure du site
+## 1. Netlify (recommandé)
 
-| URL | Contenu |
-|-----|---------|
-| `/` | Vitrine professionnelle (accueil public) |
-| `/dashboard/` | Tableau de bord exécutif |
-| `/news/` | Actualités marché |
-| `/investment/` | Plateforme d'investissement |
+1. Connecter le repo GitHub sur [Netlify](https://app.netlify.com).
+2. **Build settings** (voir aussi `/NETLIFY.md` à la racine du repo) :
+   - **Base directory** : `petrolisation-oms`
+   - **Build command** : `npm run build`
+   - **Publish directory** : `out`
+3. Lier votre **domaine** : Domain settings → Add custom domain.
+4. **Clear cache and deploy** après chaque grosse mise à jour UI.
 
-## Netlify (recommandé)
+Aucune config Vercel n’est nécessaire pour ce projet.
 
-1. Repo GitHub connecté à Netlify.
-2. **Build settings**
-   - Base directory : `petrolisation-oms`
-   - Build command : `npm run build`
-   - Publish directory : `out`
-   - Node : `20`
-3. **Domaine personnalisé** : Netlify → Domain settings → Add custom domain → suivre les DNS (CNAME ou ALIAS).
-4. Deploy : **Clear cache and deploy site**.
+## 2. Structure du site déployé
 
-## Après le lancement
+| URL | Module Oilconnect |
+|-----|-------------------|
+| `/` | Accueil / board |
+| `/dashboard/` | Overview |
+| `/trade/` | Buy & Sell |
+| `/markets/` | Oil markets |
+| `/portfolio/` | Portfolio |
+| `/shipments/` | Shipments |
+| `/inventory/` | Inventory |
+| `/counterparties/` | Counterparties |
 
-- Remplacez les données de démo par des API (prix marché, news, courtier).
-- Mettez à jour `metadata` dans `src/app/layout.tsx` avec l’URL canonique de votre domaine (`metadataBase`).
+## 3. SEO & domaine
+
+Dans `src/app/layout.tsx` :
 
 ```ts
 export const metadata: Metadata = {
-  metadataBase: new URL("https://votredomaine.com"),
+  metadataBase: new URL("https://votre-domaine.com"),
   // ...
 };
 ```
 
-## Build local
+Puis rebuild + redeploy sur Netlify.
 
-```bash
-cd petrolisation-oms
-npm run build
-npx serve out -l 3000
-```
+## 4. Données
+
+Les chiffres et contreparties restent **démo** tant que les API marché / trading ne sont pas branchées.
