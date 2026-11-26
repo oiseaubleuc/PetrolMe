@@ -62,14 +62,14 @@ export function Logo({
         <div className="leading-none">
           <div className="flex items-baseline gap-1">
             <span className="text-[15px] font-semibold tracking-tight text-white">
-              Petrolisation
+              Petrol
             </span>
-            <span className="rounded-[5px] bg-flare-500/15 px-1.5 py-0.5 text-[10px] font-bold tracking-wider text-flare-300">
-              OMS
+            <span className="text-[15px] font-semibold tracking-tight text-gradient-flare">
+              Me
             </span>
           </div>
           <div className="mt-1 text-[9.5px] font-medium uppercase tracking-[0.2em] text-slate-500">
-            by Hohosolutions
+            Oil · Markets · Invest
           </div>
         </div>
       )}

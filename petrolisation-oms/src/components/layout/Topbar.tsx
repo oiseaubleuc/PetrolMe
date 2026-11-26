@@ -259,7 +259,7 @@ export function Topbar() {
                 </div>
                 <ul className="space-y-0.5">
                   {[
-                    { label: "Open Executive Dashboard", href: "/" },
+                    { label: "Open Executive Dashboard", href: "/dashboard" },
                     { label: "View critical work orders", href: "/maintenance" },
                     { label: "Ask AI Operations Assistant", href: "/ai" },
                     { label: "Facilities map", href: "/maps" },
