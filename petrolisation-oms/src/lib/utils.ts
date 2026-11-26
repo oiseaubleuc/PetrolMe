@@ -50,7 +50,15 @@ export function seededRandom(seed: number): () => number {
 }
 
 /** Relative time formatter (e.g. "12m ago"). */
-export function timeAgo(minutes: number): string {
+export function timeAgo(input: number | Date): string {
+  let minutes: number;
+  
+  if (input instanceof Date) {
+    minutes = (Date.now() - input.getTime()) / (1000 * 60);
+  } else {
+    minutes = input;
+  }
+  
   if (minutes < 1) return "just now";
   if (minutes < 60) return `${Math.round(minutes)}m ago`;
   const hours = minutes / 60;
