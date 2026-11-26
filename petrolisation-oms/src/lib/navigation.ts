@@ -36,7 +36,7 @@ export const navigation: NavGroup[] = [
     title: "Command",
     items: [
       {
-        href: "/",
+        href: "/dashboard",
         label: "Executive Dashboard",
         icon: LayoutDashboard,
         description: "Enterprise KPIs and situational awareness",
@@ -155,19 +155,19 @@ export const navigation: NavGroup[] = [
 ];
 
 export const breadcrumbs: Record<string, { label: string; parent?: string }> = {
-  "/": { label: "Executive Dashboard" },
-  "/operations": { label: "Operations", parent: "/" },
-  "/maps": { label: "Facilities Map", parent: "/" },
-  "/assets": { label: "Asset Management", parent: "/" },
-  "/maintenance": { label: "Maintenance", parent: "/" },
-  "/hse": { label: "HSE", parent: "/" },
-  "/inventory": { label: "Inventory", parent: "/" },
-  "/logistics": { label: "Logistics", parent: "/" },
-  "/analytics": { label: "Analytics", parent: "/" },
-  "/ai": { label: "AI Assistant", parent: "/" },
-  "/reports": { label: "Reports", parent: "/" },
-  "/documents": { label: "Document Center", parent: "/" },
-  "/users": { label: "User Management", parent: "/" },
-  "/news": { label: "Market News", parent: "/" },
-  "/investment": { label: "Investment Platform", parent: "/" },
+  "/dashboard": { label: "Executive Dashboard" },
+  "/operations": { label: "Operations", parent: "/dashboard" },
+  "/maps": { label: "Facilities Map", parent: "/dashboard" },
+  "/assets": { label: "Asset Management", parent: "/dashboard" },
+  "/maintenance": { label: "Maintenance", parent: "/dashboard" },
+  "/hse": { label: "HSE", parent: "/dashboard" },
+  "/inventory": { label: "Inventory", parent: "/dashboard" },
+  "/logistics": { label: "Logistics", parent: "/dashboard" },
+  "/analytics": { label: "Analytics", parent: "/dashboard" },
+  "/ai": { label: "AI Assistant", parent: "/dashboard" },
+  "/reports": { label: "Reports", parent: "/dashboard" },
+  "/documents": { label: "Document Center", parent: "/dashboard" },
+  "/users": { label: "User Management", parent: "/dashboard" },
+  "/news": { label: "Market News", parent: "/dashboard" },
+  "/investment": { label: "Investment Platform", parent: "/dashboard" },
 };

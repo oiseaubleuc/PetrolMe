@@ -5,6 +5,7 @@
 :root {
   --font-sans: "Manrope", "Segoe UI", system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --font-display: "Playfair Display", Georgia, serif;
 }
 
 @layer base {

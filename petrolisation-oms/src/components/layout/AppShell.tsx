@@ -15,7 +15,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
           </div>
         </main>
         <footer className="border-t border-line px-6 py-3 text-center text-[10px] tracking-wide text-slate-600">
-          Petrolisation OMS · Operations Management System · Developed by Hohosolutions · © 2026
+          PetrolMe · Plateforme pétrole & énergie · Données de démonstration · © {new Date().getFullYear()}
         </footer>
       </div>
     </div>

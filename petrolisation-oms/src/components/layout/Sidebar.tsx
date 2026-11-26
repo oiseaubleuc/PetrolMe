@@ -23,10 +23,11 @@ function NavContent({ collapsed }: { collapsed: boolean }) {
           )}
           <ul className="space-y-0.5">
             {group.items.map((item) => {
+              const normalized = pathname.replace(/\/$/, "") || "/";
               const active =
-                item.href === "/"
-                  ? pathname === "/"
-                  : pathname.startsWith(item.href);
+                item.href === "/dashboard"
+                  ? normalized === "/dashboard"
+                  : normalized === item.href || normalized.startsWith(`${item.href}/`);
               const Icon = item.icon;
               return (
                 <li key={item.href}>
@@ -83,7 +84,9 @@ export function Sidebar() {
             collapsed && "justify-center px-2"
           )}
         >
-          <Logo collapsed={collapsed} />
+          <Link href="/" className="min-w-0 focus-ring rounded-lg" title="Retour au site">
+            <Logo collapsed={collapsed} />
+          </Link>
         </div>
 
         <NavContent collapsed={collapsed} />
@@ -105,9 +108,9 @@ export function Sidebar() {
           </button>
           {!collapsed && (
             <p className="mt-3 px-1 text-center text-[10px] leading-relaxed text-slate-600">
-              Petrolisation OMS
+              PetrolMe Platform
               <br />
-              Developed by Hohosolutions
+              Opérations · Marchés · Investissement
             </p>
           )}
         </div>
@@ -143,7 +146,7 @@ export function Sidebar() {
               </div>
               <NavContent collapsed={false} />
               <div className="border-t border-line p-4 text-center text-[10px] text-slate-600">
-                Petrolisation OMS · Hohosolutions
+                PetrolMe · Plateforme démo
               </div>
             </motion.aside>
           </>

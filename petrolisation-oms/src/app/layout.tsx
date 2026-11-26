@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { JetBrains_Mono, Manrope } from "next/font/google";
+import { JetBrains_Mono, Manrope, Playfair_Display } from "next/font/google";
 import "./globals.css";
 
 const sans = Manrope({
@@ -14,24 +14,36 @@ const mono = JetBrains_Mono({
   display: "swap",
 });
 
+const display = Playfair_Display({
+  subsets: ["latin"],
+  variable: "--font-display",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   title: {
-    default: "Petrolisation OMS — Operations Management System",
-    template: "%s · Petrolisation OMS",
+    default: "PetrolMe — Pétrole, marchés & investissement",
+    template: "%s · PetrolMe",
   },
   description:
-    "Petrolisation OMS is the unified operations management platform for the Oil & Gas industry — production, assets, maintenance, HSE, logistics and business intelligence. Developed by Hohosolutions.",
-  applicationName: "Petrolisation OMS",
-  authors: [{ name: "Hohosolutions" }],
+    "Plateforme professionnelle pour suivre le pétrole et le gaz : opérations, actualités des marchés et outils d'investissement. Pensée pour les décideurs, investisseurs et équipes opérationnelles.",
+  applicationName: "PetrolMe",
+  authors: [{ name: "PetrolMe" }],
   keywords: [
+    "pétrole",
+    "investissement pétrolier",
     "Oil & Gas",
+    "Brent",
+    "WTI",
     "Operations Management",
-    "SCADA",
-    "Asset Management",
-    "Predictive Maintenance",
-    "HSE",
-    "Enterprise SaaS",
+    "actualités énergie",
   ],
+  openGraph: {
+    title: "PetrolMe — Pétrole, marchés & investissement",
+    description:
+      "Opérations, intelligence marché et plateforme d'investissement pétrolier dans une expérience unifiée.",
+    type: "website",
+  },
 };
 
 export const viewport: Viewport = {
@@ -44,7 +56,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`dark ${sans.variable} ${mono.variable}`}>
+    <html lang="fr" className={`dark ${sans.variable} ${mono.variable} ${display.variable}`}>
       <body>{children}</body>
     </html>
   );

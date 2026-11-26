@@ -8,11 +8,16 @@ import { breadcrumbs } from "@/lib/navigation";
 
 export function Breadcrumb() {
   const pathname = usePathname();
-  const current = breadcrumbs[pathname] ?? { label: "Workspace" };
+  const normalized = pathname.replace(/\/$/, "") || "/";
+  const current = breadcrumbs[normalized] ?? { label: "Workspace" };
   const trail: { href: string; label: string }[] = [];
 
   if (current.parent) {
-    trail.push({ href: "/", label: "Home" });
+    trail.push({ href: "/", label: "Accueil" });
+    const parent = breadcrumbs[current.parent];
+    if (parent) {
+      trail.push({ href: current.parent, label: parent.label });
+    }
   }
   trail.push({ href: pathname, label: current.label });
 
