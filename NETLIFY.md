@@ -1,27 +1,80 @@
-# Netlify — Petrolisation OMS
+# Netlify — Oilconnect (Next.js static export)
 
-## Site : https://petroloms.netlify.app
+**Hébergement prévu : Netlify uniquement** (pas Vercel, pas l’aperçu Cursor).
 
-L’app est exportée en **statique** (`out/`).
+L’app vit dans `petrolisation-oms/` et se publie depuis le dossier **`out/`** après `npm run build`.
 
-### Réglages dashboard (obligatoires)
+## Réglages Netlify (obligatoires)
 
-Site **petroloms** → Project configuration → Build settings :
+**Site settings → Build & deploy → Build settings**
 
 | Champ | Valeur |
 |--------|--------|
 | **Base directory** | `petrolisation-oms` |
 | **Build command** | `npm run build` |
 | **Publish directory** | `out` |
+| **Node** | `20` (voir `.nvmrc`) |
 
-⚠️ Si Base directory est déjà `petrolisation-oms` dans l’UI,  
-le `base` du `netlify.toml` racine peut doubler le chemin.  
-Dans ce cas : laisse **Base directory = `petrolisation-oms`** dans l’UI  
-et mets le `netlify.toml` racine **sans** `base` (ou laisse l’UI primer).
+Branche à déployer : en général **`main`** après merge de la PR Oilconnect (`cursor/oilconnect-frontend-5da9` ou `main` à jour).
 
-Puis : **Deploys → Trigger deploy → Clear cache and deploy site**.
+Après chaque changement important : **Deploys → Trigger deploy → Clear cache and deploy site**.
 
-### Ne pas utiliser
+## URLs après déploiement
 
-- Publish = `.next` → cause souvent la page **Page not found** de Netlify
-- Base directory vide → déploie la vitrine HTML
+| Chemin | Page |
+|--------|------|
+| `/` | Accueil Oilconnect (board) |
+| `/dashboard/` | Overview |
+| `/trade/` | Buy & Sell |
+| `/markets/` | Oil markets |
+| `/portfolio/` | Portfolio |
+| `/shipments/` | Shipments |
+| `/inventory/` | Inventory |
+| `/counterparties/` | Counterparties |
+
+## Domaine personnalisé
+
+1. **Domain management → Add domain**
+2. Chez votre registrar : CNAME vers le sous-domaine Netlify (`xxx.netlify.app`) ou ALIAS / nameservers Netlify
+3. HTTPS : certificat Let’s Encrypt automatique
+
+Dans le code (optionnel mais recommandé), définir l’URL canonique dans `petrolisation-oms/src/app/layout.tsx` :
+
+```ts
+metadataBase: new URL("https://votre-domaine.com"),
+```
+
+## Site protégé (erreur 401 / login Netlify)
+
+Si `https://oilconnects.netlify.app` redirige vers **app.netlify.com/edge-access**, le site n’est pas cassé : l’**accès visiteurs** est verrouillé.
+
+1. Netlify → votre site **oilconnects**
+2. **Site configuration → Access & security** (ou *Visitor access*)
+3. Passer l’accès en **Public** (désactiver mot de passe / protection d’équipe sur la prod)
+4. Attendre 1–2 minutes et recharger
+
+Pour garder un site privé en dev mais public sur votre domaine custom, configurez l’accès par environnement (production = public).
+
+## Erreurs fréquentes
+
+| Problème | Cause | Solution |
+|----------|--------|----------|
+| **Page not found** partout | Publish = `.next` au lieu de `out` | Publish = `out` |
+| Ancienne vitrine HTML | Base directory vide | Base = `petrolisation-oms` |
+| Chemin doublé | `base` dans `netlify.toml` racine **et** Base directory Netlify | Garder **un seul** : UI `petrolisation-oms`, ou retirer `base` du toml racine |
+| 404 sur une route | Ancien deploy sans rebuild | Clear cache and deploy |
+
+## Fichiers de config
+
+- Racine : `netlify.toml` (base `petrolisation-oms`)
+- App : `petrolisation-oms/netlify.toml` (si site lié uniquement au sous-dossier)
+
+## Test local (= rendu Netlify)
+
+```bash
+cd petrolisation-oms
+npm run build
+npx serve out -l 3000
+```
+
+Ouvrir http://localhost:3000/ puis naviguer vers `/dashboard/`.

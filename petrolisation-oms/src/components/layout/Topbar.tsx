@@ -77,7 +77,7 @@ export function Topbar() {
   }, [notificationsOpen, setNotificationsOpen]);
 
   return (
-    <header className="sticky top-0 z-20 border-b border-line bg-ink-950/80 backdrop-blur-xl">
+    <header className="sticky top-0 z-20 border-b border-line bg-desk-void/90 backdrop-blur-xl">
       <div className="flex h-16 items-center gap-3 px-4 md:px-6">
         <IconButton
           className="lg:hidden"
@@ -259,10 +259,10 @@ export function Topbar() {
                 </div>
                 <ul className="space-y-0.5">
                   {[
-                    { label: "Open Executive Dashboard", href: "/" },
-                    { label: "View critical work orders", href: "/maintenance" },
-                    { label: "Ask AI Operations Assistant", href: "/ai" },
-                    { label: "Facilities map", href: "/maps" },
+                    { label: "Trading overview", href: "/dashboard" },
+                    { label: "Buy & Sell", href: "/trade" },
+                    { label: "Oil markets", href: "/markets" },
+                    { label: "Portfolio", href: "/portfolio" },
                   ].map((item) => (
                     <li key={item.href}>
                       <Link

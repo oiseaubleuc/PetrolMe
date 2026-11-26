@@ -1,8 +1,8 @@
 import type { Metadata, Viewport } from "next";
-import { JetBrains_Mono, Manrope } from "next/font/google";
+import { JetBrains_Mono, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 
-const sans = Manrope({
+const sans = Space_Grotesk({
   subsets: ["latin"],
   variable: "--font-sans",
   display: "swap",
@@ -15,27 +15,34 @@ const mono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL ?? "https://oilconnects.netlify.app"
+  ),
   title: {
-    default: "Petrolisation OMS — Operations Management System",
-    template: "%s · Petrolisation OMS",
+    default: "Oilconnect — Oil trading platform",
+    template: "%s · Oilconnect",
   },
   description:
-    "Petrolisation OMS is the unified operations management platform for the Oil & Gas industry — production, assets, maintenance, HSE, logistics and business intelligence. Developed by Hohosolutions.",
-  applicationName: "Petrolisation OMS",
-  authors: [{ name: "Hohosolutions" }],
+    "Oilconnect connects trading overview, oil markets, buy & sell, portfolio, shipments, inventory and counterparties on one professional desk.",
+  applicationName: "Oilconnect",
   keywords: [
-    "Oil & Gas",
-    "Operations Management",
-    "SCADA",
-    "Asset Management",
-    "Predictive Maintenance",
-    "HSE",
-    "Enterprise SaaS",
+    "Oilconnect",
+    "oil trading",
+    "Brent",
+    "WTI",
+    "portfolio",
+    "shipments",
+    "counterparties",
   ],
+  openGraph: {
+    title: "Oilconnect — Pages de la plateforme",
+    description: "Professional oil trading desk — overview, markets, portfolio and logistics.",
+    type: "website",
+  },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#070A0F",
+  themeColor: "#0D1015",
   width: "device-width",
   initialScale: 1,
 };
@@ -44,7 +51,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`dark ${sans.variable} ${mono.variable}`}>
+    <html lang="fr" className={`dark ${sans.variable} ${mono.variable}`}>
       <body>{children}</body>
     </html>
   );
