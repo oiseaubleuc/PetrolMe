@@ -44,6 +44,17 @@ Dans le code (optionnel mais recommandé), définir l’URL canonique dans `petr
 metadataBase: new URL("https://votre-domaine.com"),
 ```
 
+## Site protégé (erreur 401 / login Netlify)
+
+Si `https://oilconnects.netlify.app` redirige vers **app.netlify.com/edge-access**, le site n’est pas cassé : l’**accès visiteurs** est verrouillé.
+
+1. Netlify → votre site **oilconnects**
+2. **Site configuration → Access & security** (ou *Visitor access*)
+3. Passer l’accès en **Public** (désactiver mot de passe / protection d’équipe sur la prod)
+4. Attendre 1–2 minutes et recharger
+
+Pour garder un site privé en dev mais public sur votre domaine custom, configurez l’accès par environnement (production = public).
+
 ## Erreurs fréquentes
 
 | Problème | Cause | Solution |

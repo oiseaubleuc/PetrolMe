@@ -15,6 +15,9 @@ const mono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL ?? "https://oilconnects.netlify.app"
+  ),
   title: {
     default: "Oilconnect — Oil trading platform",
     template: "%s · Oilconnect",
